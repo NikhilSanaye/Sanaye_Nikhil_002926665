@@ -726,10 +726,13 @@ public class CreateJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Warranty Year cannot contain characters");
             return false;
         }
+        
+        if(!txtYear.getText().isEmpty()){
         if(!txtWarrantyYear.getText().isEmpty() && !checkIfCharsPresent(txtWarrantyYear.getText())){
             if(Integer.parseInt(txtWarrantyYear.getText()) < Integer.parseInt(txtYear.getText()) )
             JOptionPane.showMessageDialog(this, "Warranty Year cannot be less than manufacturing year");
             return false;
+        }
         }
         if(!txtWarrantyYear.getText().isEmpty() && checkSpecialCharacters(txtWarrantyYear.getText())){
             JOptionPane.showMessageDialog(this, "Warranty Year cannot contain special characters");
@@ -775,7 +778,18 @@ public class CreateJPanel extends javax.swing.JPanel {
     if (chunks.length != 2){
         return false;
     }
-
+    
+    //email should not start with or end with dot
+    if(email.startsWith(".") || email.endsWith(".")){
+        return false;
+    }
+    
+    //email should not end with special character
+    char t= email.charAt(email.length()-1);
+    if(checkSpecialCharacters(String.valueOf(t))){
+        return false;
+    }
+  
     String emailName = chunks[0];
     String emailDomain = chunks[1];
     
@@ -784,7 +798,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     }
     
     // Define valid chars
-    char[] validChars = new char[]{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','.','0','1','2','3','4','5','6','7','8','9','_','-'};
+    char[] validChars = new char[]{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','.','0','1','2','3','4','5','6','7','8','9','_','-'};
 
     // emailName must only include valid chars
     for(int i = 0; i < emailName.length(); i ++) {
