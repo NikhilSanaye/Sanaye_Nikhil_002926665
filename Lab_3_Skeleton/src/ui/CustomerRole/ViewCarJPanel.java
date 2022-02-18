@@ -32,6 +32,9 @@ public class ViewCarJPanel extends javax.swing.JPanel {
         txtModelNo.setText(c.getModelNumber());
         txtSerialNo.setText(c.getSerialNumber());
         txtNoOfSeats.setText(c.getNumberOfSeats());
+        txtCity.setText(c.getCity());
+        txtManufacturingYear.setText(c.getManufacturingYear());
+        txtlMaintenanceCertificate.setText(c.getMaintenanceCertificate());
         
     }
     
@@ -53,6 +56,12 @@ public class ViewCarJPanel extends javax.swing.JPanel {
         lblModelNo = new javax.swing.JLabel();
         lblNoOfSeats = new javax.swing.JLabel();
         txtNoOfSeats = new javax.swing.JTextField();
+        lblCity = new javax.swing.JLabel();
+        txtCity = new javax.swing.JTextField();
+        lblManufacturingYear = new javax.swing.JLabel();
+        txtManufacturingYear = new javax.swing.JTextField();
+        lblMaintenanceCertificate = new javax.swing.JLabel();
+        txtlMaintenanceCertificate = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -82,29 +91,62 @@ public class ViewCarJPanel extends javax.swing.JPanel {
 
         txtNoOfSeats.setEditable(false);
 
+        lblCity.setText("City:");
+
+        txtCity.setEditable(false);
+
+        lblManufacturingYear.setText("Manufacturing Year:");
+
+        txtManufacturingYear.setEditable(false);
+        txtManufacturingYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtManufacturingYearActionPerformed(evt);
+            }
+        });
+
+        lblMaintenanceCertificate.setText("Maintenance Certificate:");
+
+        txtlMaintenanceCertificate.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCity)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(186, 186, 186)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblManufacturer, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblModelNo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblSerialNo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblNoOfSeats, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(backButton1))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblManufacturer, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblModelNo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSerialNo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNoOfSeats, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNoOfSeats, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(backButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtModelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNoOfSeats, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblMaintenanceCertificate)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtlMaintenanceCertificate, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblManufacturingYear)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtManufacturingYear, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(62, 62, 62)))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
 
@@ -133,6 +175,18 @@ public class ViewCarJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNoOfSeats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNoOfSeats))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCity)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblManufacturingYear)
+                    .addComponent(txtManufacturingYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblMaintenanceCertificate)
+                    .addComponent(txtlMaintenanceCertificate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -142,12 +196,14 @@ public class ViewCarJPanel extends javax.swing.JPanel {
         backAction();
         
     }//GEN-LAST:event_backButton1ActionPerformed
+
+    private void txtManufacturingYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManufacturingYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtManufacturingYearActionPerformed
     private void backAction() {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        //BrowseCarsJPanel browseCarsJPanel = (BrowseCarsJPanel) component;
-        //BrowseCarsJPanel.refreshTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }
@@ -155,14 +211,20 @@ public class ViewCarJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblMaintenanceCertificate;
     private javax.swing.JLabel lblManufacturer;
+    private javax.swing.JLabel lblManufacturingYear;
     private javax.swing.JLabel lblModelNo;
     private javax.swing.JLabel lblNoOfSeats;
     private javax.swing.JLabel lblSerialNo;
+    private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtManufacturer;
+    private javax.swing.JTextField txtManufacturingYear;
     private javax.swing.JTextField txtModelNo;
     private javax.swing.JTextField txtNoOfSeats;
     private javax.swing.JTextField txtSerialNo;
+    private javax.swing.JTextField txtlMaintenanceCertificate;
     // End of variables declaration//GEN-END:variables
     
 }

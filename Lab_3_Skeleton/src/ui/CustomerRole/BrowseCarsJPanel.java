@@ -371,8 +371,8 @@ public class BrowseCarsJPanel extends javax.swing.JPanel {
 
     private void btnFindCabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCabActionPerformed
         // TODO add your handling code here:
-        if(carCatalog.getCarCatalog().size()>0){
-        Car c= carCatalog.getCarCatalog().get(0);
+        Car c= findFirstAvailableCab();
+        if(null!=c){
         ViewCarJPanel vc = new ViewCarJPanel(userProcessContainer, c);
         userProcessContainer.add("ViewCarJPanel", vc);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -790,6 +790,16 @@ public class BrowseCarsJPanel extends javax.swing.JPanel {
             return false;
         }     
         return true;
+    }
+
+    private Car findFirstAvailableCab() {
+        for(Car c: carCatalog.getCarCatalog()){
+            if(c.getAvailability().equals("true") &&  Integer. parseInt(c.getNumberOfSeats())>0){
+                return c;
+            }
+        }
+        return null;
+        
     }
 
 

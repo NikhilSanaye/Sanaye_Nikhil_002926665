@@ -38,11 +38,19 @@ public class ViewCarByManufacturersJPanel extends javax.swing.JPanel {
             model.removeRow(i);
         }
         for (Car s : carList) {
-            Object row[] = new Object[4];
+            Object row[] = new Object[8];
             row[0] = s.getManufacturer();
             row[1] = s.getSerialNumber();
             row[2] = s.getModelNumber();
-            row[3] = s.getManufacturingYear();
+            row[3] = s.getManufacturingYear();    
+            row[4] = s.getCity();
+            row[5] = s.getNumberOfSeats();
+            row[6] = s.getMaintenanceCertificate();
+            if(Boolean. valueOf(s.getAvailability())){
+                row[7] = "Yes";
+            } else{
+                row[7] = "No";
+            }
             model.addRow(row);
         }
     }
@@ -62,17 +70,17 @@ public class ViewCarByManufacturersJPanel extends javax.swing.JPanel {
 
         tblCarDetailsByManufacturer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Manufacturer", "Serial No", "Model No", "Mfcg Year"
+                "Manufacturer", "Serial No", "Model No", "Mfcg Year", "City", "Seats", "Maint. cert", "Availability"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -93,11 +101,14 @@ public class ViewCarByManufacturersJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
