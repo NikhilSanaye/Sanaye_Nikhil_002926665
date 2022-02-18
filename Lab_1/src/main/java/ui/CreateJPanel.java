@@ -729,9 +729,10 @@ public class CreateJPanel extends javax.swing.JPanel {
         
         if(!txtYear.getText().isEmpty()){
         if(!txtWarrantyYear.getText().isEmpty() && !checkIfCharsPresent(txtWarrantyYear.getText())){
-            if(Integer.parseInt(txtWarrantyYear.getText()) < Integer.parseInt(txtYear.getText()) )
+            if(Integer.parseInt(txtWarrantyYear.getText()) < Integer.parseInt(txtYear.getText()) ){
             JOptionPane.showMessageDialog(this, "Warranty Year cannot be less than manufacturing year");
             return false;
+            }
         }
         }
         if(!txtWarrantyYear.getText().isEmpty() && checkSpecialCharacters(txtWarrantyYear.getText())){

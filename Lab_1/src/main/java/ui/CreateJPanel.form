@@ -97,15 +97,13 @@
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="btnCreateRecord" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="txtOwnerDriverLicense" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="txtOwnerEmailAddresses" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="txtOwnerTelephoneNumbers" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="txtOwnerName" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="txtLicensePlates" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="txtSeatsNumber" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="txtEngineNo" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtOwnerDriverLicense" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txtOwnerEmailAddresses" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txtOwnerTelephoneNumbers" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txtOwnerName" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txtLicensePlates" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txtSeatsNumber" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="txtEngineNo" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
