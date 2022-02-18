@@ -68,7 +68,7 @@ public class ViewCarByManufacturersJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Manufacturer", "Serial No", "Model No", "Manufacturing Year"
+                "Manufacturer", "Serial No", "Model No", "Mfcg Year"
             }
         ) {
             boolean[] canEdit = new boolean [] {
