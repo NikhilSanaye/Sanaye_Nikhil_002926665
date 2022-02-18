@@ -24,7 +24,8 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         carCatalog = new CarCatalog();
-        setSize(830,600);
+        //setSize(830,600);
+        setSize(930,700);
     }
 
     /**
