@@ -210,8 +210,8 @@ public class ViewAbnormalPatientDetailsJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ManagePatientJPanel manageCarsJPanel = (ManagePatientJPanel) component;
-        manageCarsJPanel.refreshTable();
+        ViewAbnormalPatientsJPanel viewAbnormalPatientsJPanel = (ViewAbnormalPatientsJPanel) component;
+        viewAbnormalPatientsJPanel.refreshTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
