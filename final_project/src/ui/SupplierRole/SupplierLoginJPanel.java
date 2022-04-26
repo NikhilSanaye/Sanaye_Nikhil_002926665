@@ -14,7 +14,7 @@ import java.sql.Statement;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import model.Supplier;
+import model.User;
 
 /**
  *

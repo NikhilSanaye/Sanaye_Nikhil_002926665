@@ -1,11 +1,12 @@
 package ui.AdminRole;
 
 import model.Product;
-import model.Supplier;
+import model.User;
 import model.SupplierDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Supplier;
 
 /**
  *
@@ -20,7 +21,7 @@ public class ViewSupplierJPanel extends javax.swing.JPanel {
         initComponents();
         userProcessContainer = upc;
         supplier = s;
-        lblSupplierName.setText(s.getSupplyName());
+        lblSupplierName.setText(String.valueOf(s.getUserId()));
         refreshTable();
     }
 

@@ -1,6 +1,6 @@
 package ui.SupplierRole;
 
-import model.Supplier;
+import model.User;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 

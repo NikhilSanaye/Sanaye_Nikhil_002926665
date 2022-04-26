@@ -1,7 +1,7 @@
 package ui.SupplierRole;
 
 import model.Product;
-import model.Supplier;
+import model.User;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 public class SearchForProductJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    Supplier supplier;
-    public SearchForProductJPanel(JPanel upc, Supplier s) {
+    User supplier;
+    public SearchForProductJPanel(JPanel upc, User s) {
         initComponents();
         userProcessContainer = upc;
         supplier =s;
@@ -92,7 +92,8 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
         try{
         Product p;
         int productId = Integer.parseInt(txtId.getText());
-        p = supplier.getProductCatalog().searchProduct(String.valueOf(productId));
+        //p = supplier.getProductCatalog().searchProduct(productId);
+        p=null;
         if(p!=null){
         SearchResultJPanel vpdjp = new SearchResultJPanel(userProcessContainer, p);
         userProcessContainer.add("SearchResultJPanel", vpdjp);

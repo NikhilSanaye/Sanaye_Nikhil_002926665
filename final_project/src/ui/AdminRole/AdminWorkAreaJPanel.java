@@ -97,7 +97,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
-    ManageSuppliersJPanel ms = new ManageSuppliersJPanel(userProcessContainer, supplierDirectory);
+    ManageSuppliersJPanel ms = new ManageSuppliersJPanel(userProcessContainer);
     userProcessContainer.add("ManageSupplierAdministrative", ms);
     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
     layout.next(userProcessContainer);

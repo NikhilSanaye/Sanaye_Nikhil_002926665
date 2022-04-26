@@ -24,21 +24,21 @@ public class SupplierDirectory {
         return supplierList;
     }
 
-    public Supplier addSupplier() {
+    public User addSupplier() {
         Supplier newSupplier = new Supplier();
         supplierList.add(newSupplier);
         return newSupplier;
     }
 
-    public void removeSupplier(Supplier s) {
+    public void removeSupplier(User s) {
         supplierList.remove(s);
     }
-
-    public Supplier searchSupplier(String supplierName) {
-        for (Supplier supplier : supplierList) {
-            if (supplier.getSupplyName().equals(supplierName)) {
-                return supplier;
-            }
+    
+    public User searchSupplier(String supplierName) {
+        for (User supplier : supplierList) {
+            //if (supplier.getUserId().equals(supplierName)) {
+            //    return supplier;
+            //}
         }
         return null;
     }

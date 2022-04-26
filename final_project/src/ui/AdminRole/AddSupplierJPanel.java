@@ -1,6 +1,6 @@
 package ui.AdminRole;
 
-import model.Supplier;
+import model.User;
 import model.SupplierDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -124,8 +124,8 @@ public class AddSupplierJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
-        Supplier supplier = supplierDirectory.addSupplier();
-        supplier.setSupplyName(txtName.getText());
+        User supplier = supplierDirectory.addSupplier();
+        supplier.setUserId(txtName.getText());
         JOptionPane.showMessageDialog(null, "Supplier added successfully!!", "Info", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAddActionPerformed
 

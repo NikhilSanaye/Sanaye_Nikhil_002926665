@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Product {
     
-    private String productId;
+    private int productId;
     private String prodName;
     private String price;
     private String Description;
@@ -49,12 +49,68 @@ public class Product {
         this.price = price;
     }
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
+    }
+
+    public ArrayList<String> getRating() {
+        return rating;
+    }
+
+    public void setRating(ArrayList<String> rating) {
+        this.rating = rating;
+    }
+
+    public String getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String Category) {
+        this.Category = Category;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public ArrayList<String> getProductReviews() {
+        return productReviews;
+    }
+
+    public void setProductReviews(ArrayList<String> productReviews) {
+        this.productReviews = productReviews;
     }
 
 }

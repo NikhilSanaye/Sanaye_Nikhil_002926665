@@ -21,23 +21,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtPrice" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtName" min="-2" pref="161" max="-2" attributes="0"/>
-                      <Component id="txtId" min="-2" pref="161" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -53,6 +36,50 @@
               </Group>
               <EmptySpace min="260" max="32767" attributes="0"/>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txtProductPrice" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="txtProductName" min="-2" pref="161" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txtProductDescription" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="txtProductSupplier" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="txtProductCategory" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="txtDiscount" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="txtProductId" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="txtProductDimension" min="-2" pref="161" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -64,29 +91,60 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Component id="txtName" linkSize="1" min="-2" pref="29" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Component id="txtId" linkSize="1" min="-2" pref="29" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPrice" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="txtProductName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="txtProductId" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtProductPrice" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel4" min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="jLabel7" min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" pref="24" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtProductDescription" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtProductSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtProductCategory" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtProductDimension" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jLabel9" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="txtDiscount" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,17 +163,12 @@
         <Property name="text" type="java.lang.String" value="Product ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtId">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Product Price:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPrice">
+    <Component class="javax.swing.JTextField" name="txtProductPrice">
     </Component>
     <Component class="javax.swing.JButton" name="btnAdd">
       <Properties>
@@ -138,7 +191,44 @@
         <Property name="text" type="java.lang.String" value="Product Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtName">
+    <Component class="javax.swing.JTextField" name="txtProductName">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Description:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtProductDescription">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Supplier:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtProductSupplier">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Category:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtProductCategory">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dimension:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Discount:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDiscount">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtProductId">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtProductDimension">
     </Component>
   </SubComponents>
 </Form>

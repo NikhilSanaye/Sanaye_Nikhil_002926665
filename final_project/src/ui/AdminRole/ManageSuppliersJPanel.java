@@ -1,11 +1,16 @@
 package ui.AdminRole;
 
-import model.Supplier;
+import model.User;
 import model.SupplierDirectory;
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Supplier;
 
 /**
  *
@@ -15,20 +20,21 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
-    public ManageSuppliersJPanel(JPanel upc, SupplierDirectory sd) {
+    public ManageSuppliersJPanel(JPanel upc) {
         initComponents();
         userProcessContainer = upc;
-        supplierDirectory = sd;
         refreshTable();
     }
   
     public void refreshTable(){
+        supplierDirectory=new SupplierDirectory();
+        populateSuppliersFromDB();
         int rowCount = supplierTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel) supplierTable.getModel();
         for(int i=rowCount-1;i>=0;i--){
             model.removeRow(i);
         }
-        for (Supplier s : supplierDirectory.getSupplierlist()) {
+        for (User s : supplierDirectory.getSupplierlist()) {
             Object row[] = new Object[1];
             row[0] = s;
             model.addRow(row);
@@ -176,7 +182,7 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier) supplierTable.getValueAt(row, 0);
+        User s = (User) supplierTable.getValueAt(row, 0);
         supplierDirectory.removeSupplier(s);
         refreshTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
@@ -199,5 +205,41 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable supplierTable;
     // End of variables declaration//GEN-END:variables
+
+    private void populateSuppliersFromDB() {
+        try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "Select * from users where role='supplier'";     
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        while(rs.next()) {
+            String userId = rs.getString("userId");
+            String password = rs.getString("password");
+            String role = rs.getString("role");
+            String mailId = rs.getString("mailId");
+            String address = rs.getString("address");
+            String contactNumber = rs.getString("contactNumber");
+            String SSN = rs.getString("SSN");
+            String registrationState = rs.getString("registrationState");
+            createSupplierObject(userId, password, role, mailId, address, contactNumber, SSN, registrationState);
+        } 
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void createSupplierObject(String userId, String password, String role, String mailId, String address, String contactNumber, String SSN, String registrationState) {
+        Supplier newSupplier = new Supplier();
+        newSupplier.setUserId(userId);
+        newSupplier.setPassword(password);
+        newSupplier.setRole(role);
+        newSupplier.setMailId(mailId);
+        newSupplier.setAddress(address);
+        newSupplier.setContactNumber(contactNumber);
+        newSupplier.setSSN(SSN);
+        newSupplier.setRegistrationState(registrationState);
+        supplierDirectory.getSupplierlist().add(newSupplier);
+    }
 
 }

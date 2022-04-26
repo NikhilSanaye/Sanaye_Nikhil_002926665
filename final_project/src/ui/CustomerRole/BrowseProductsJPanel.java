@@ -6,7 +6,7 @@
 package ui.CustomerRole;
 
 import model.Product;
-import model.Supplier;
+import model.User;
 import model.SupplierDirectory;
 import ui.SupplierRole.ViewProductDetailJPanel;
 import java.awt.CardLayout;

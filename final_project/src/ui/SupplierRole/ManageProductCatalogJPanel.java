@@ -1,11 +1,17 @@
 package ui.SupplierRole;
 
 import model.Product;
-import model.Supplier;
+import model.User;
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.ProductCatalog;
 
 /**
  *
@@ -17,31 +23,35 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
      * Creates new form ManageProductCatalogJPanel
      */
     private JPanel userProcessContainer;
-    private String supplier;
-    private Supplier supplier1;
+    private String supplierName;
+    private User supplier1;
+    Product p;
+    //List<Product> productList= new ArrayList<Product>();
+    ProductCatalog pcatalog= new ProductCatalog();
+    ArrayList<String> productReviews= new ArrayList<String>();
 
     public ManageProductCatalogJPanel(JPanel upc, String s) {
         initComponents();
         userProcessContainer = upc;
-        supplier = s;
+        supplierName = s;
         lblSupplier.setText("Supplier : " + s);
         refreshTable();
     }
 
     public void refreshTable() {
         
-        //
-        populateProducts();
+        
+        populateProductsFromDb();
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
         model.setRowCount(0);
-           /*
-        for (Product p : supplier.getProductCatalog().getProductcatalog()) {
+           
+        for (Product p : pcatalog.getProductcatalog()) {
             Object row[] = new Object[3];
             row[0] = p;
             row[1] = p.getProductId();
             row[2] = p.getPrice();
             model.addRow(row);
-        }*/
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -173,7 +183,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
-        CreateNewProductJPanel cnpjp = new CreateNewProductJPanel(userProcessContainer, supplier1);
+        CreateNewProductJPanel cnpjp = new CreateNewProductJPanel(userProcessContainer, supplierName);
         userProcessContainer.add("CreateNewProductJPanel", cnpjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -218,7 +228,42 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblProductCatalog;
     // End of variables declaration//GEN-END:variables
 
-    private void populateProducts() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void populateProductsFromDb() {
+        try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "Select * from products";     
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        while(rs.next()) {
+            int id = rs.getInt("productId");
+            String productName = rs.getString("productName");
+            String price = rs.getString("price");
+            String description = rs.getString("description");
+            String supplier = rs.getString("supplier");
+            String category = rs.getString("category");
+            String dimension = rs.getString("dimension");
+            String discount = rs.getString("discount");
+            String reviews = rs.getString("reviews");
+            createProductObject(id, productName, price, description, supplier, category, dimension, discount, reviews);
+        } 
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void createProductObject(int id, String productName, String price, String description, String supplier, String category, String dimension, String discount, String reviews) {
+        p=new Product();
+        p.setProductId(id);
+        p.setProdName(productName);
+        p.setPrice(price);
+        p.setDescription(description);
+        p.setSupplier(supplier);
+        p.setCategory(category);
+        p.setDescription(dimension);
+        p.setDiscount(discount);
+        productReviews.add(reviews);
+        p.setProductReviews(productReviews);
+        pcatalog.getProductcatalog().add(p);
     }
 }

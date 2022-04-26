@@ -15,7 +15,7 @@ import java.sql.Statement;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import model.Supplier;
+import model.User;
 
 /**
  *
@@ -25,7 +25,7 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
   
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
-    private Supplier s;
+    private User s;
     public LogisticsLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();

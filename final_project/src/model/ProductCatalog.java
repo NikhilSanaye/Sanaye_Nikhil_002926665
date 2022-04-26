@@ -34,9 +34,9 @@ public class ProductCatalog {
         productCatalog.remove(p);
     }
 
-    public Product searchProduct(String id) {
+    public Product searchProduct(int id) {
         for (Product product : productCatalog) {
-            if (product.getProductId().equals(id)) {
+            if (product.getProductId()==(id)) {
                 return product;
             }
         }

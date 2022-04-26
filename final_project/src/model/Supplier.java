@@ -7,24 +7,10 @@ package model;
 
 /**
  *
- * @author archil
+ * @author Nikhil
  */
-public class Supplier {
-
-    private String supplyName;
+public class Supplier extends User{
     private ProductCatalog productCatalog;
-
-    public Supplier() {
-        productCatalog = new ProductCatalog();
-    }
-
-    public String getSupplyName() {
-        return supplyName;
-    }
-
-    public void setSupplyName(String supplyName) {
-        this.supplyName = supplyName;
-    }
 
     public ProductCatalog getProductCatalog() {
         return productCatalog;
@@ -33,10 +19,4 @@ public class Supplier {
     public void setProductCatalog(ProductCatalog productCatalog) {
         this.productCatalog = productCatalog;
     }
-
-    @Override
-    public String toString() {
-        return supplyName; 
-    }
-
 }
