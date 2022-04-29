@@ -72,14 +72,14 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(65, 65, 65))))))
+                                    .addGap(65, 65, 65))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(22, 22, 22)))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,23 +88,26 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(66, 66, 66)
                 .addComponent(btnManageSuppliers)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageSuppliers1)
                 .addGap(28, 28, 28)
+                .addComponent(btnManageSuppliers1)
+                .addGap(26, 26, 26)
                 .addComponent(btnManageSuppliers2)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
-    ManageSuppliersJPanel ms = new ManageSuppliersJPanel(userProcessContainer);
-    userProcessContainer.add("ManageSupplierAdministrative", ms);
-    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-    layout.next(userProcessContainer);
+        ManageSuppliersJPanel ms = new ManageSuppliersJPanel(userProcessContainer);
+        userProcessContainer.add("ManageSupplierAdministrative", ms);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed
-        // TODO add your handling code here:
+        SupplierRequestActionJPanel sraj = new SupplierRequestActionJPanel(userProcessContainer);
+        userProcessContainer.add("SupplierRequestActionJPanel", sraj);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
 
     private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed

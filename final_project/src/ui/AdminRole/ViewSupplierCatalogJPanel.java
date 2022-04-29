@@ -4,6 +4,8 @@ import model.Product;
 import model.User;
 import model.SupplierDirectory;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Supplier;
@@ -12,12 +14,13 @@ import model.Supplier;
  *
  * @author Mihir Mehta / Hechen Gao
  */
-public class ViewSupplierJPanel extends javax.swing.JPanel {
+public class ViewSupplierCatalogJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Supplier supplier;
+    private List<Product> supplierProductCatalog=new ArrayList<Product>();
     
-    public ViewSupplierJPanel(JPanel upc, Supplier s) {
+    public ViewSupplierCatalogJPanel(JPanel upc, Supplier s) {
         initComponents();
         userProcessContainer = upc;
         supplier = s;
@@ -31,7 +34,11 @@ public class ViewSupplierJPanel extends javax.swing.JPanel {
         for(int i=rowCount - 1;i>=0;i--){
             model.removeRow(i);
         }
-        for(Product p: supplier.getProductCatalog().getProductcatalog()){
+        
+        if(supplier.getProductCatalog()!=null)
+            supplierProductCatalog=supplier.getProductCatalog().getProductcatalog();
+            
+        for(Product p: supplierProductCatalog){
             Object row[] = new Object[3];
             row[0] = p;
             row[1] = p.getProductId();
