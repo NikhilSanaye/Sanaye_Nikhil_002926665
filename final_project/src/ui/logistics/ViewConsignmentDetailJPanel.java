@@ -212,4 +212,5 @@ public class ViewConsignmentDetailJPanel extends javax.swing.JPanel {
     private void clearboxes() {
 
     }
+    
 }
