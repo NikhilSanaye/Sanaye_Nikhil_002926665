@@ -31,6 +31,7 @@ public class LogisticsSupportJPanel extends javax.swing.JPanel {
 
         btnManageSuppliers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnManageSuppliers1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -45,6 +46,13 @@ public class LogisticsSupportJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Logistic's Work Area");
 
+        btnManageSuppliers1.setText("View Complaints >>");
+        btnManageSuppliers1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageSuppliers1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -55,7 +63,9 @@ public class LogisticsSupportJPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnManageSuppliers)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageSuppliers1)
+                    .addComponent(btnManageSuppliers))
                 .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
@@ -65,7 +75,9 @@ public class LogisticsSupportJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(66, 66, 66)
                 .addComponent(btnManageSuppliers)
-                .addGap(467, 467, 467))
+                .addGap(38, 38, 38)
+                .addComponent(btnManageSuppliers1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -75,10 +87,19 @@ public class LogisticsSupportJPanel extends javax.swing.JPanel {
     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
     layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
+
+    private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed
+        // TODO add your handling code here:LogisticsJComplaintJPanel
+        LogisticsJComplaintJPanel ljcjp = new LogisticsJComplaintJPanel(userProcessContainer);
+    userProcessContainer.add("LogisticsJComplaintJPanel", ljcjp);
+    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+    layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageSuppliers;
+    private javax.swing.JButton btnManageSuppliers1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     
