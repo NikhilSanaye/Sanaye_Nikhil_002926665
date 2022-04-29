@@ -185,7 +185,7 @@ public class ViewConsignmentDetailJPanel extends javax.swing.JPanel {
         preparedStmt.execute();
      
         connection.close();
-        JOptionPane.showMessageDialog(null, "Updated", "Info", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Consignment details updated", "Info", JOptionPane.INFORMATION_MESSAGE);
         clearboxes();
         }               
         catch (Exception exception) {
