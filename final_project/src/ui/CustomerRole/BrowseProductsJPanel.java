@@ -56,7 +56,6 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
    
     public void refreshTable() {
         
-        
         populateProducts();
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
         
@@ -65,15 +64,12 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         for (Product p : pcatalog.getProductcatalog()) {
             Object row[] = new Object[4];
             row[0] = p;
-            row[1] = p.getProductId();
+            row[1] = p.getProdName();
             row[2] = p.getPrice();
-            row[3] = p.getDiscount();
+            row[3] = p.getDescription();
             model.addRow(row);
             
-        }
-        
-        
-       
+        }      
     }
     
     
@@ -167,7 +163,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Name", "Product Id", "Price", "Description"
+                "Product Id", "Name", "Price", "Description"
             }
         ) {
             boolean[] canEdit = new boolean [] {

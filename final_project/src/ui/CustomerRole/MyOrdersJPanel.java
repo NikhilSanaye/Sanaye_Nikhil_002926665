@@ -63,7 +63,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
 
         orderTableJPanel = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
-        btnUpdateOrder = new javax.swing.JButton();
         btnViewOrder = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -84,13 +83,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
             orderTable.getColumnModel().getColumn(1).setPreferredWidth(200);
             orderTable.getColumnModel().getColumn(1).setMaxWidth(200);
         }
-
-        btnUpdateOrder.setText("Update Order ");
-        btnUpdateOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateOrderActionPerformed(evt);
-            }
-        });
 
         btnViewOrder.setText("View Order Details");
         btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -117,10 +109,7 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdateOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(119, 119, 119)
@@ -138,9 +127,7 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(orderTableJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewOrder)
-                    .addComponent(btnUpdateOrder))
+                .addComponent(btnViewOrder)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -159,18 +146,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
         layout.next(customerUserProcessContainer);
         
     }//GEN-LAST:event_btnViewOrderActionPerformed
-
-    private void btnUpdateOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateOrderActionPerformed
-
-        int row = orderTable.getSelectedRow();
-        if(row<0){
-            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-            Order o = (Order) orderTable.getValueAt(row, 0);
-        //supplierDirectory.removeSupplier();
-        refreshTable();
-    }//GEN-LAST:event_btnUpdateOrderActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
         int row = orderTable.getSelectedRow();
@@ -195,7 +170,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnUpdateOrder;
     private javax.swing.JButton btnViewOrder;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable orderTable;
