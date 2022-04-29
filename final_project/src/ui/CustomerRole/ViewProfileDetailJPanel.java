@@ -37,6 +37,14 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         txtSSN.setText(user.getSSN());
         txtMailId.setText(user.getMailId());
         txtState.setText(user.getState());
+        
+        txtUserName.setEditable(true);
+         txtAddress.setEditable(true);
+         txtCity.setEditable(true);
+         txtContactNo.setEditable(true);
+         txtSSN.setEditable(true);
+         txtMailId.setEditable(false);
+         txtState.setEditable(true);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,10 +55,8 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         txtUserName = new javax.swing.JTextField();
         lblProductPrice = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
         txtMailId = new javax.swing.JTextField();
         lblProductId = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
         lblProductPrice1 = new javax.swing.JLabel();
         txtCity = new javax.swing.JTextField();
         lblProductPrice2 = new javax.swing.JLabel();
@@ -59,6 +65,7 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         txtContactNo = new javax.swing.JTextField();
         lblProductPrice4 = new javax.swing.JLabel();
         txtSSN = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -73,24 +80,9 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
 
         txtAddress.setEditable(false);
 
-        btnUpdate.setText("Update Profile");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
         txtMailId.setEditable(false);
 
         lblProductId.setText("mail id:");
-
-        btnSave.setText("Save");
-        btnSave.setEnabled(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
 
         lblProductPrice1.setText("City:");
 
@@ -108,39 +100,40 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
 
         txtSSN.setEditable(false);
 
+        jButton1.setText("Save");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(210, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblProductPrice4)
-                            .addComponent(lblProductPrice3)
-                            .addComponent(lblProductPrice2)
-                            .addComponent(lblProductPrice1)
-                            .addComponent(lblProductId)
-                            .addComponent(lblProductName)
-                            .addComponent(lblProductPrice))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)))
+                    .addComponent(lblProductPrice4)
+                    .addComponent(lblProductPrice3)
+                    .addComponent(lblProductPrice2)
+                    .addComponent(lblProductPrice1)
+                    .addComponent(lblProductId)
+                    .addComponent(lblProductName)
+                    .addComponent(lblProductPrice))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(196, 196, 196))
             .addGroup(layout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addComponent(lblTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -176,21 +169,11 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblProductPrice4)
                     .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(btnUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(btnSave)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jButton1)
+                .addContainerGap(174, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-
-        //txtId.setEditable(true);
-        txtUserName.setEditable(true);
-        txtAddress.setEditable(true);
-        btnSave.setEnabled(true);
-}//GEN-LAST:event_btnUpdateActionPerformed
 
       private void backAction() {
         userProcessContainer.remove(this);
@@ -200,15 +183,9 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         manageProductCatalogJPanel.refreshTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        //product.setPrice(txtPrice.getText());
-        //product.setProdName(txtName.getText());
-    }//GEN-LAST:event_btnSaveActionPerformed
-   
+    }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblProductId;
     private javax.swing.JLabel lblProductName;
     private javax.swing.JLabel lblProductPrice;
