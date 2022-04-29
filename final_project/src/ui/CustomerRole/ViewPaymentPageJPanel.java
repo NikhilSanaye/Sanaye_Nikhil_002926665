@@ -56,14 +56,11 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        backButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         btnPay = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         txtOrderStatus = new javax.swing.JTextField();
         txtOrderStatus1 = new javax.swing.JTextField();
         txtOrderStatus2 = new javax.swing.JTextField();
-        txtAmount = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -74,13 +71,6 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Expiry Year:");
 
-        backButton1.setText("<< Back");
-        backButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("CVV:");
 
         btnPay.setText("Pay");
@@ -90,8 +80,6 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("Amount:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,39 +87,30 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(backButton1)
-                        .addGap(115, 115, 115)
+                        .addGap(216, 216, 216)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(186, 186, 186)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtOrderStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOrderStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnPay)
-                        .addGap(109, 109, 109)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                            .addComponent(txtOrderStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(171, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnPay)
+                .addGap(279, 279, 279))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(backButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel1)))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel1)
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,20 +123,11 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtOrderStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(60, 60, 60)
                 .addComponent(btnPay)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_backButton1ActionPerformed
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         // TODO add your handling code here:
@@ -174,14 +144,11 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton1;
     private javax.swing.JButton btnPay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtOrderStatus;
     private javax.swing.JTextField txtOrderStatus1;
     private javax.swing.JTextField txtOrderStatus2;
@@ -200,7 +167,7 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
         Statement st = connection.createStatement();
         int rs = st.executeUpdate(query);
         if(rs>0){
-            JOptionPane.showMessageDialog(null, "Order inserted", "Info", JOptionPane.INFORMATION_MESSAGE);            
+            //JOptionPane.showMessageDialog(null, "Order inserted", "Info", JOptionPane.INFORMATION_MESSAGE);            
         }               
         connection.close();
         } catch (Exception exception) {
@@ -217,7 +184,7 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
         Statement st = connection.createStatement();
         int rs = st.executeUpdate(query);
         if(rs>0){
-            JOptionPane.showMessageDialog(null, "Order items inserted", "Info", JOptionPane.INFORMATION_MESSAGE);            
+            //JOptionPane.showMessageDialog(null, "Order items inserted", "Info", JOptionPane.INFORMATION_MESSAGE);            
         }               
         connection.close();
         } catch (Exception exception) {
