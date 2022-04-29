@@ -82,6 +82,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         tblCart = new javax.swing.JTable();
         lblItemsInCart = new javax.swing.JLabel();
         btnCheckOut = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -140,6 +141,8 @@ public class ManageCartJPanel extends javax.swing.JPanel {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available Promotion", "PROMO20", "PROMO30", "FLAT25" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +165,8 @@ public class ManageCartJPanel extends javax.swing.JPanel {
                                     .addComponent(btnRemoveOrderItem)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(208, 208, 208)
-                                .addComponent(lblTitle)))
+                                .addComponent(lblTitle))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(169, 169, 169))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -185,7 +189,9 @@ public class ManageCartJPanel extends javax.swing.JPanel {
                     .addComponent(btnRemoveOrderItem)
                     .addComponent(btnModifyQuantity)
                     .addComponent(txtNewQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                 .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
@@ -251,6 +257,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnModifyQuantity;
     private javax.swing.JButton btnRemoveOrderItem;
     private javax.swing.JButton btnViewOrderItem;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblItemsInCart;
     private javax.swing.JLabel lblTitle;

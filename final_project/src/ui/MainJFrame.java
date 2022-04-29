@@ -71,7 +71,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnSupplier1.setText("Sales Manager");
+        btnSupplier1.setText("Marketting manager");
         btnSupplier1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSupplier1ActionPerformed(evt);

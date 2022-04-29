@@ -43,6 +43,7 @@
                               <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
                               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jComboBox1" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                   </Group>
@@ -72,7 +73,9 @@
                   <Component id="btnModifyQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNewQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="157" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="191" max="32767" attributes="0"/>
               <Component id="btnCheckOut" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
           </Group>
@@ -183,6 +186,17 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckOutActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Available Promotion&quot;, &quot;PROMO20&quot;, &quot;PROMO30&quot;, &quot;FLAT25&quot; })" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
