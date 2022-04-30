@@ -33,13 +33,14 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnLoginGuest = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -51,10 +52,16 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Customer's Login/Signup");
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -70,6 +77,13 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         jLabel4.setText("Password:");
 
         jLabel5.setText("New User? Please register->");
+
+        btnLoginGuest.setText("Continue as Guest");
+        btnLoginGuest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginGuestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,11 +106,14 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                                 .addGap(175, 175, 175))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnLogin)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnLoginGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -110,13 +127,15 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                 .addGap(108, 108, 108)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogin)
+                    .addComponent(btnLoginGuest))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -133,30 +152,47 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        CustomerWorkAreaJPanel createVitalSignJPanel= new CustomerWorkAreaJPanel(userProcessContainer);
-        createVitalSignJPanel.setBounds(0, 0, 1000, 1000);
-        createVitalSignJPanel.setBackground(Color.WHITE);
+        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer, txtUsername.getText());
+        CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
+        CustomerWorkAreaJPanel.setBackground(Color.WHITE);
         JOptionPane jop = new JOptionPane();
         JDialog dialog = jop.createDialog("My Dialog");
         dialog.setSize(1800, 900);
         dialog.setLocation(0,0);
-        dialog.setContentPane(createVitalSignJPanel);
+        dialog.setContentPane(CustomerWorkAreaJPanel);
         dialog.setVisible(true);        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnLoginGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginGuestActionPerformed
+        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer,"guest");
+        CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
+        CustomerWorkAreaJPanel.setBackground(Color.WHITE);
+        JOptionPane jop = new JOptionPane();
+        JDialog dialog = jop.createDialog("My Dialog");
+        dialog.setSize(1800, 900);
+        dialog.setLocation(0,0);
+        dialog.setContentPane(CustomerWorkAreaJPanel);
+        dialog.setVisible(true);        
+    }//GEN-LAST:event_btnLoginGuestActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLoginGuest;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
     
 }

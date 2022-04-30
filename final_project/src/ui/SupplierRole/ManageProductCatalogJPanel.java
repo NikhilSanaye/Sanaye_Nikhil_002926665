@@ -166,36 +166,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-
-        int selectedRowIndex = tblProductCatalog.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(null, "Pls select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        
-        Product p = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
-        
-        ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(userProcessContainer, p);
-        userProcessContainer.add("ViewProductDetailJPanel", vpdjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnViewActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-
-        CreateNewProductJPanel cnpjp = new CreateNewProductJPanel(userProcessContainer, supplierName);
-        userProcessContainer.add("CreateNewProductJPanel", cnpjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
-        SearchForProductJPanel sfpjp = new SearchForProductJPanel(userProcessContainer, supplier1);
-        userProcessContainer.add("SearchForProductJPanel", sfpjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
@@ -216,6 +186,38 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         //supplier.getProductCatalog().removeProduct(s);
         refreshTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+
+        SearchForProductJPanel sfpjp = new SearchForProductJPanel(userProcessContainer, supplier1);
+        userProcessContainer.add("SearchForProductJPanel", sfpjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+
+        int selectedRowIndex = tblProductCatalog.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(null, "Pls select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+
+        Product p = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
+
+        ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(userProcessContainer, p);
+        userProcessContainer.add("ViewProductDetailJPanel", vpdjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+
+        CreateNewProductJPanel cnpjp = new CreateNewProductJPanel(userProcessContainer, supplierName);
+        userProcessContainer.add("CreateNewProductJPanel", cnpjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;

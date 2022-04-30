@@ -17,7 +17,7 @@ public class Product {
     private String prodName;
     private String price;
     private String Description;
-    private ArrayList<String> rating;
+    private String rating;
     private String supplier;
     private String Category;
     private String dimension;
@@ -65,11 +65,11 @@ public class Product {
         this.Description = Description;
     }
 
-    public ArrayList<String> getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(ArrayList<String> rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 

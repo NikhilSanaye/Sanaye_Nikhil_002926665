@@ -6,8 +6,12 @@
 package ui.CustomerRole;
 
 import java.awt.CardLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import ui.AdminRole.AdminWorkAreaJPanel;
+import image_slide.*;
+import model.ProductCatalog;
+import ui.SupplierRole.SupplierLoginJPanel;
 
 
 
@@ -23,10 +27,26 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
 
     private JPanel userProcessContainer;
+    String userName;
+    ProductCatalog cart= new ProductCatalog();
+    //ImageSlide imageSlide;
     /** Creates new form ProductManagerWorkAreaJPanel */
-    public CustomerWorkAreaJPanel(JPanel userProcessContainer) {
+    public CustomerWorkAreaJPanel(JPanel userProcessContainer, String userName) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        this.userName=userName;
+        
+        //imageSlide=new ImageSlide();
+            imageSlide1.addImage(new ImageIcon("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/project_images/1.png"));
+            imageSlide1.addImage(new ImageIcon("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/project_images/2.jpg"));
+            imageSlide1.addImage(new ImageIcon("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/project_images/3.jpg"));
+            imageSlide1.addImage(new ImageIcon("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/project_images/4.jpg"));
+            //C:\javaprojects\Sanaye_Nikhil_002926665\final_project\project_images
+        //imageSlide.addImage(new ImageIcon(getClass().getResource("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/src/bannerImage/1.png")));
+        //imageSlide.addImage(new ImageIcon(getClass().getResource("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/src/bannerImage/1.png")));
+        
+        //imageSlide.addImage(new ImageIcon(getClass().getResource("/img/3.jpg")));
+        //imageSlide.addImage(new ImageIcon(getClass().getResource("/img/4.jpg")));
     }
 
     /** This method is called from within the constructor to
@@ -38,11 +58,19 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelController = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        Parent = new javax.swing.JPanel();
+        customerUserProcessContainer = new javax.swing.JPanel();
         firstjPanel = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        imageSlide1 = new image_slide.ImageSlide();
+        jButton5 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         secondjPanel = new javax.swing.JPanel();
 
         lblTitle.setBackground(new java.awt.Color(0, 0, 0));
@@ -52,7 +80,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         lblTitle.setText("Welcome Dear Customer!");
         lblTitle.setIconTextGap(20);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanelController.setBackground(new java.awt.Color(153, 153, 153));
 
         jButton1.setText("Browse Products");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,51 +89,131 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("My Account");
+        jButton6.setText("Cart Items");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("My Profile");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("My orders");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("View Promotions");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelControllerLayout = new javax.swing.GroupLayout(jPanelController);
+        jPanelController.setLayout(jPanelControllerLayout);
+        jPanelControllerLayout.setHorizontalGroup(
+            jPanelControllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelControllerLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(jPanelControllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+        jPanelControllerLayout.setVerticalGroup(
+            jPanelControllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelControllerLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Parent.setBackground(new java.awt.Color(255, 204, 204));
-        Parent.setLayout(new java.awt.CardLayout());
+        customerUserProcessContainer.setBackground(new java.awt.Color(255, 204, 204));
+        customerUserProcessContainer.setLayout(new java.awt.CardLayout());
 
         firstjPanel.setBackground(new java.awt.Color(51, 255, 102));
+
+        jButton4.setText("1");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("2");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("3");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("4");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout firstjPanelLayout = new javax.swing.GroupLayout(firstjPanel);
         firstjPanel.setLayout(firstjPanelLayout);
         firstjPanelLayout.setHorizontalGroup(
             firstjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGroup(firstjPanelLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jButton4)
+                .addGap(34, 34, 34)
+                .addComponent(jButton5)
+                .addGap(33, 33, 33)
+                .addComponent(jButton9)
+                .addGap(26, 26, 26)
+                .addComponent(jButton10)
+                .addContainerGap(293, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, firstjPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imageSlide1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         firstjPanelLayout.setVerticalGroup(
             firstjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGroup(firstjPanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(firstjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(imageSlide1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        Parent.add(firstjPanel, "card2");
+        customerUserProcessContainer.add(firstjPanel, "card2");
 
         secondjPanel.setBackground(new java.awt.Color(0, 51, 255));
 
@@ -120,7 +228,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             .addGap(0, 471, Short.MAX_VALUE)
         );
 
-        Parent.add(secondjPanel, "card3");
+        customerUserProcessContainer.add(secondjPanel, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,9 +241,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelController, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(Parent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(customerUserProcessContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,8 +253,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Parent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelController, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(customerUserProcessContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -154,26 +262,75 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        Parent.removeAll();
-        Parent.add(new BrowseProductsJPanel());
-        Parent.repaint();
-        Parent.revalidate();
+        customerUserProcessContainer.removeAll();
+        customerUserProcessContainer.add(new BrowseProductsJPanel(cart));
+        customerUserProcessContainer.repaint();
+        customerUserProcessContainer.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         imageSlide1.showImage(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        imageSlide1.showImage(1);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:\
+        ManageCartJPanel mcjp = new ManageCartJPanel(userProcessContainer, userName, cart);
+        customerUserProcessContainer.add("ManageCartJPanel", mcjp);
+        CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        ViewProfileDetailJPanel vpdjp = new ViewProfileDetailJPanel(userProcessContainer, userName);
+        customerUserProcessContainer.add("ViewProfiletDetailJPanel", vpdjp);
+        CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        imageSlide1.showImage(2);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        imageSlide1.showImage(3);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Parent.removeAll();
-        Parent.add(secondjPanel);
-        Parent.repaint();
-        Parent.revalidate();
+        //firstjPanel vpdjp = new firstjPanel(userProcessContainer, userName);
+        customerUserProcessContainer.add(firstjPanel);
+        CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Parent;
+    private javax.swing.JPanel customerUserProcessContainer;
     private javax.swing.JPanel firstjPanel;
+    private image_slide.ImageSlide imageSlide1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JPanel jPanelController;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel secondjPanel;
     // End of variables declaration//GEN-END:variables
