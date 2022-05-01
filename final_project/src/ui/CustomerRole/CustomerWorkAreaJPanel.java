@@ -10,7 +10,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import ui.AdminRole.AdminWorkAreaJPanel;
 import image_slide.*;
+import java.util.ArrayList;
+import java.util.List;
+import model.OrderItems;
 import model.ProductCatalog;
+import model.User;
 import ui.SupplierRole.SupplierLoginJPanel;
 
 
@@ -27,14 +31,15 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
 
     private JPanel userProcessContainer;
-    String userName;
+    User loggedInUser;
     ProductCatalog cart= new ProductCatalog();
+    List<OrderItems> orderItemList= new ArrayList<OrderItems>();
     //ImageSlide imageSlide;
     /** Creates new form ProductManagerWorkAreaJPanel */
-    public CustomerWorkAreaJPanel(JPanel userProcessContainer, String userName) {
+    public CustomerWorkAreaJPanel(JPanel userProcessContainer, User loggedInUser) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.userName=userName;
+        this.loggedInUser=loggedInUser;
         
         //imageSlide=new ImageSlide();
             imageSlide1.addImage(new ImageIcon("C:/javaprojects/Sanaye_Nikhil_002926665/final_project/project_images/1.png"));
@@ -59,11 +64,12 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         jPanelController = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnBrowseProducts = new javax.swing.JButton();
+        btnCartItems = new javax.swing.JButton();
+        btnMyProfile = new javax.swing.JButton();
+        btnMyOrders = new javax.swing.JButton();
+        btnViewPromotions = new javax.swing.JButton();
+        btnMyOrders1 = new javax.swing.JButton();
         customerUserProcessContainer = new javax.swing.JPanel();
         firstjPanel = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -71,7 +77,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        secondjPanel = new javax.swing.JPanel();
 
         lblTitle.setBackground(new java.awt.Color(0, 0, 0));
         lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -82,38 +87,45 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanelController.setBackground(new java.awt.Color(153, 153, 153));
 
-        jButton1.setText("Browse Products");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBrowseProducts.setText("Browse Products");
+        btnBrowseProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBrowseProductsActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Cart Items");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnCartItems.setText("Cart Items");
+        btnCartItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCartItemsActionPerformed(evt);
             }
         });
 
-        jButton7.setText("My Profile");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnMyProfile.setText("My Profile");
+        btnMyProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnMyProfileActionPerformed(evt);
             }
         });
 
-        jButton8.setText("My orders");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnMyOrders.setText("My orders");
+        btnMyOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnMyOrdersActionPerformed(evt);
             }
         });
 
-        jButton2.setText("View Promotions");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnViewPromotions.setText("View Promotions");
+        btnViewPromotions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnViewPromotionsActionPerformed(evt);
+            }
+        });
+
+        btnMyOrders1.setText("Returns/Refunds");
+        btnMyOrders1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMyOrders1ActionPerformed(evt);
             }
         });
 
@@ -124,26 +136,29 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanelControllerLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(jPanelControllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBrowseProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCartItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMyProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMyOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnViewPromotions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMyOrders1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanelControllerLayout.setVerticalGroup(
             jPanelControllerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelControllerLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnViewPromotions, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBrowseProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCartItems, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMyOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMyOrders1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -215,21 +230,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         customerUserProcessContainer.add(firstjPanel, "card2");
 
-        secondjPanel.setBackground(new java.awt.Color(0, 51, 255));
-
-        javax.swing.GroupLayout secondjPanelLayout = new javax.swing.GroupLayout(secondjPanel);
-        secondjPanel.setLayout(secondjPanelLayout);
-        secondjPanelLayout.setHorizontalGroup(
-            secondjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
-        );
-        secondjPanelLayout.setVerticalGroup(
-            secondjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
-        );
-
-        customerUserProcessContainer.add(secondjPanel, "card3");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -259,14 +259,14 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBrowseProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseProductsActionPerformed
         // TODO add your handling code here:
         
         customerUserProcessContainer.removeAll();
-        customerUserProcessContainer.add(new BrowseProductsJPanel(cart));
+        customerUserProcessContainer.add(new BrowseProductsJPanel(orderItemList));
         customerUserProcessContainer.repaint();
         customerUserProcessContainer.revalidate();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBrowseProductsActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -278,26 +278,30 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         imageSlide1.showImage(1);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnCartItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartItemsActionPerformed
         // TODO add your handling code here:\
-        ManageCartJPanel mcjp = new ManageCartJPanel(userProcessContainer, userName, cart);
+        ManageCartJPanel mcjp = new ManageCartJPanel(customerUserProcessContainer, loggedInUser, orderItemList);
         customerUserProcessContainer.add("ManageCartJPanel", mcjp);
         CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
         layout.next(customerUserProcessContainer);
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnCartItemsActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnMyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyProfileActionPerformed
         // TODO add your handling code here:
-        ViewProfileDetailJPanel vpdjp = new ViewProfileDetailJPanel(userProcessContainer, userName);
+        ViewProfileDetailJPanel vpdjp = new ViewProfileDetailJPanel(userProcessContainer, loggedInUser.getMailId());
         customerUserProcessContainer.add("ViewProfiletDetailJPanel", vpdjp);
         CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
         layout.next(customerUserProcessContainer);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnMyProfileActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnMyOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyOrdersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        MyOrdersJPanel mojp = new MyOrdersJPanel(userProcessContainer, loggedInUser);
+        customerUserProcessContainer.add("MyOrdersJPanel", mojp);
+        CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
+    }//GEN-LAST:event_btnMyOrdersActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -309,29 +313,37 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         imageSlide1.showImage(3);
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnViewPromotionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPromotionsActionPerformed
         // TODO add your handling code here:
         //firstjPanel vpdjp = new firstjPanel(userProcessContainer, userName);
         customerUserProcessContainer.add(firstjPanel);
         CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
         layout.next(customerUserProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnViewPromotionsActionPerformed
+
+    private void btnMyOrders1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyOrders1ActionPerformed
+        // TODO add your handling code here:
+        MyOrdersJPanel mojp = new MyOrdersJPanel(userProcessContainer, loggedInUser);
+        customerUserProcessContainer.add("MyOrdersJPanel", mojp);
+        CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
+    }//GEN-LAST:event_btnMyOrders1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowseProducts;
+    private javax.swing.JButton btnCartItems;
+    private javax.swing.JButton btnMyOrders;
+    private javax.swing.JButton btnMyOrders1;
+    private javax.swing.JButton btnMyProfile;
+    private javax.swing.JButton btnViewPromotions;
     private javax.swing.JPanel customerUserProcessContainer;
     private javax.swing.JPanel firstjPanel;
     private image_slide.ImageSlide imageSlide1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanelController;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel secondjPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,9 +15,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.OrderItems;
 import model.ProductCatalog;
 
 
@@ -30,10 +32,12 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     /** Creates new form BrowseProducts */
     ProductCatalog pcatalog= new ProductCatalog();
     ProductCatalog cart;
+    List<OrderItems> orderItemsList;
 
-    public BrowseProductsJPanel(ProductCatalog cart) {
+    public BrowseProductsJPanel(List<OrderItems> orderItemsList) {
         initComponents();
         this.cart=cart;
+        this.orderItemsList=orderItemsList;
         refreshTable();
     }
     
@@ -76,7 +80,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         lblSalesPrice = new javax.swing.JLabel();
         txtSalesPrice = new javax.swing.JTextField();
         lblQuantity = new javax.swing.JLabel();
-        spnQuantity = new javax.swing.JSpinner();
+        prodQuantity = new javax.swing.JSpinner();
         btnAddToCart = new javax.swing.JButton();
         btnProductDetails = new javax.swing.JButton();
 
@@ -142,7 +146,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
 
         lblQuantity.setText("Quantity:");
 
-        spnQuantity.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        prodQuantity.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         btnAddToCart.setText("Add to Cart");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +187,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(lblQuantity)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prodQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnAddToCart, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -195,7 +199,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {spnQuantity, txtSalesPrice});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {prodQuantity, txtSalesPrice});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +223,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                     .addComponent(lblSalesPrice)
                     .addComponent(txtSalesPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblQuantity)
-                    .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prodQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddToCart)
                     .addComponent(btnProductDetails))
                 .addGap(20, 20, 20))
@@ -244,17 +248,27 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     private void btnSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchProductActionPerformed
         
     }//GEN-LAST:event_btnSearchProductActionPerformed
-
+    
+    OrderItems orderItem;
     private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
         int selectedRowIndex = tblProductCatalog.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(null, "Pls select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
         Product p = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
-        cart.getProductcatalog().add(p);
-        JOptionPane.showMessageDialog(null, "Product added to cart, size=" +cart.getProductcatalog().size(), "Warning", JOptionPane.WARNING_MESSAGE);
+        //cart.getProductcatalog().add(p);
+        
+        //create order item
+        orderItem=new OrderItems();
+        orderItem.setProductId(String.valueOf(p.getProductId()));
+        orderItem.setDescription(p.getDescription());
+        orderItem.setQuantity((int) prodQuantity.getValue());
+        orderItem.setUnitPrice(Double.parseDouble(p.getPrice()));
+        orderItem.setProductName(p.getProdName());
+        orderItemsList.add(orderItem);
+        //JOptionPane.showMessageDialog(null, "Product added to cart, size=" +cart.getProductcatalog().size(), "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAddToCartActionPerformed
 
     
@@ -270,15 +284,12 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblSalesPrice;
     private javax.swing.JLabel lblSupplier;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JSpinner spnQuantity;
+    private javax.swing.JSpinner prodQuantity;
     private javax.swing.JTable tblProductCatalog;
     private javax.swing.JTextField txtSalesPrice;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
-    private void addProductsToList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     private void populateProductsFromDb() {
         try {

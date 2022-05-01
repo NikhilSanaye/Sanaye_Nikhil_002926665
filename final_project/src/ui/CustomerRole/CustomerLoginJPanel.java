@@ -4,9 +4,14 @@ import ui.AdminRole.*;
 import model.SupplierDirectory;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.User;
 
 /**
  *
@@ -16,6 +21,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
   
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
+    public User loggedInUser;
     public CustomerLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();
@@ -33,14 +39,14 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
+        txtMailId = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnLoginGuest = new javax.swing.JButton();
+        txtPassword = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -52,9 +58,9 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Customer's Login/Signup");
 
-        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+        txtMailId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameActionPerformed(evt);
+                txtMailIdActionPerformed(evt);
             }
         });
 
@@ -72,7 +78,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Username:");
+        jLabel3.setText("Mail id:");
 
         jLabel4.setText("Password:");
 
@@ -82,6 +88,12 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         btnLoginGuest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginGuestActionPerformed(evt);
+            }
+        });
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
             }
         });
 
@@ -106,14 +118,14 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                                 .addGap(175, 175, 175))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnLogin)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnLoginGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnLoginGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -127,11 +139,11 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                 .addGap(108, 108, 108)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
@@ -154,7 +166,8 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer, txtUsername.getText());
+        if(validateUser()){
+        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer, loggedInUser);
         CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
         CustomerWorkAreaJPanel.setBackground(Color.WHITE);
         JOptionPane jop = new JOptionPane();
@@ -162,11 +175,16 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         dialog.setSize(1800, 900);
         dialog.setLocation(0,0);
         dialog.setContentPane(CustomerWorkAreaJPanel);
-        dialog.setVisible(true);        
+        dialog.setVisible(true);   
+        }else{
+            
+        }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLoginGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginGuestActionPerformed
-        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer,"guest");
+        User guestUser=new User();
+        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer,guestUser);
         CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
         CustomerWorkAreaJPanel.setBackground(Color.WHITE);
         JOptionPane jop = new JOptionPane();
@@ -177,9 +195,13 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         dialog.setVisible(true);        
     }//GEN-LAST:event_btnLoginGuestActionPerformed
 
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+    private void txtMailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameActionPerformed
+    }//GEN-LAST:event_txtMailIdActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,8 +213,51 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField txtMailId;
     private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
-    
+
+    private boolean validateUser() {    
+    try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "Select * from users where mailId='"+txtMailId.getText()+"' and password='"+txtPassword.getText()+"' and role='customer'";     
+        Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+        
+        while(rs.next()) {
+            String userId = rs.getString("userId");
+            String mailId = rs.getString("mailId");
+            String address = rs.getString("address");
+            String contactNumber = rs.getString("contactNumber");
+            String SSN = rs.getString("SSN");
+            String registrationState = rs.getString("registrationState");
+            String city = rs.getString("city");
+            String state = rs.getString("state");
+            createUserObject(userId, mailId, address, contactNumber, SSN, registrationState, city, state);
+        }    
+            
+        if (loggedInUser!=null) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Wrong Credentials", "Info", JOptionPane.INFORMATION_MESSAGE);
+               }
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return false;
+        }
+
+    private void createUserObject(String userId, String mailId, String address, String contactNumber, String SSN, String registrationState, String city, String state) {
+        loggedInUser= new User();
+        loggedInUser.setUserId(userId);
+        loggedInUser.setMailId(mailId);
+        loggedInUser.setAddress(address);
+        loggedInUser.setContactNumber(contactNumber);
+        loggedInUser.setSSN(SSN);
+        loggedInUser.setRegistrationState(registrationState);
+        loggedInUser.setCity(city);
+        loggedInUser.setState(state);
+    }
+
 }

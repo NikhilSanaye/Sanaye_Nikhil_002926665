@@ -8,11 +8,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Order;
+import model.OrderItems;
 import model.ProductCatalog;
+import ui.AdminRole.AdminWorkAreaJPanel;
 
 /**
  *
@@ -23,19 +29,22 @@ public class ManageCartJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageProductCatalogJPanel
      */
+    Order order;
+    List<OrderItems> orderItems;
     private JPanel userProcessContainer;
     private String userName;
     //private User supplier1;
     Product p;
     //List<Product> productList= new ArrayList<Product>();
-    ProductCatalog cart;
     ArrayList<String> productReviews= new ArrayList<String>();
+    User loggedInUser;
+    ArrayList<OrderItems> orderItemList;
 
-    public ManageCartJPanel(JPanel upc, String s, ProductCatalog cart) {
+    public ManageCartJPanel(JPanel upc, User loggedInUser, List<OrderItems> orderItemList) {
         initComponents();
         userProcessContainer = upc;
-        userName = s;
-        this.cart=cart;
+        this.loggedInUser = loggedInUser;
+        this.orderItemList=(ArrayList<OrderItems>) orderItemList;
         
         refreshTable();
     }
@@ -46,11 +55,12 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
         model.setRowCount(0);
            
-        for (Product p : cart.getProductcatalog()) {
-            Object row[] = new Object[3];
-            row[0] = p;
-            row[1] = p.getProductId();
-            row[2] = p.getPrice();
+        for (OrderItems o : orderItemList) {
+            Object row[] = new Object[4];
+            row[0] = o.getProductName();
+            row[1] = o.getUnitPrice();
+            row[2] = o.getQuantity();
+            row[3] = String.valueOf(o.getUnitPrice()*o.getQuantity());
             model.addRow(row);
         }
     }
@@ -205,6 +215,12 @@ public class ManageCartJPanel extends javax.swing.JPanel {
 
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
         // TODO add your handling code here:
+        createOrderObject();
+        createOrderItemsObject();
+        ViewPaymentPageJPanel vppjp = new ViewPaymentPageJPanel(userProcessContainer,order, orderItemList);
+        userProcessContainer.add("ViewPaymentPageJPanel",vppjp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
 
     }//GEN-LAST:event_btnCheckOutActionPerformed
 
@@ -220,5 +236,55 @@ public class ManageCartJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblCart;
     private javax.swing.JTextField txtNewQuantity;
     // End of variables declaration//GEN-END:variables
+
+    private void createOrderObject() {
+        int orderId= returnMaxOrderId();
+        
+        order=new Order();
+        order.setOrderId(String.valueOf(orderId));
+        order.setAddress(loggedInUser.getAddress());
+        order.setCity(loggedInUser.getCity());
+        order.setState(loggedInUser.getState());
+        order.setCountry(loggedInUser.getCountry());
+        order.setMailId(loggedInUser.getMailId());
+        order.setDeliveryState("Order placed");
+        order.setOrderDate(getCurrentDate());
+        
+        for(int i=0;i<orderItemList.size();i++){
+            orderItemList.get(i).setOrderId(order.getOrderId());
+        }
+        }
+    
+    public int returnMaxOrderId(){
+        int maxOrderId=1;
+        try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "select MAX(orderId) orderId from orders;";     
+        Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+        if (rs.next()) {      
+            int orderId=rs.getInt("orderId");
+            maxOrderId= orderId+1;
+            //JOptionPane.showMessageDialog(null, "Hi"+orderId, "Info", JOptionPane.INFORMATION_MESSAGE);
+            return maxOrderId;
+        } else {
+            JOptionPane.showMessageDialog(null, "Wrong Credentials", "Info", JOptionPane.INFORMATION_MESSAGE);
+               }
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return maxOrderId;
+    }
+
+    private void createOrderItemsObject() {
+        
+    }
+
+    private String getCurrentDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
+    }
 
 }
