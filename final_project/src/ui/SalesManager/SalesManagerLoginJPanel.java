@@ -13,16 +13,18 @@ import java.sql.Statement;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.User;
 
 /**
  *
  * @author  Mihir Mehta / Hechen Gao
  */
-public class SalesManagerJPanel extends javax.swing.JPanel {
+public class SalesManagerLoginJPanel extends javax.swing.JPanel {
   
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
-    public SalesManagerJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
+    private User salesManagerUser;
+    public SalesManagerLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();
         this.userProcessContainer=userProcessContainer;
@@ -112,10 +114,22 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(validateSalesUser()){
+            
+        if(salesManagerUser.getRole().equals("salesmanager")){    
         SalesManagerWorkAreaJPanel smwajp = new SalesManagerWorkAreaJPanel(userProcessContainer, supplierDirectory);
         userProcessContainer.add("SalesManagerWorkAreaJPanel",smwajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer); 
+        }
+        if(salesManagerUser.getRole().equals("promotionmanager")){    
+        PromotionManagerWorkAreaJPanel pmwajp = new PromotionManagerWorkAreaJPanel(userProcessContainer, supplierDirectory);
+        userProcessContainer.add("PromotionManagerWorkAreaJPanel",pmwajp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
+        } 
+        if(!salesManagerUser.getRole().equals("salesmanager") && !salesManagerUser.getRole().equals("promotionmanager")){
+            JOptionPane.showMessageDialog(null, "Invalid role", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -133,10 +147,24 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
     private boolean validateSalesUser() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+txtPassword.getText()+"' and role='salesmanager'";     
+        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+txtPassword.getText()+"'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
-        if (rs.next()) {
+        while(rs.next()) {
+            String userId = rs.getString("userId");
+            String mailId = rs.getString("mailId");
+            String address = rs.getString("address");
+            String contactNumber = rs.getString("contactNumber");
+            String SSN = rs.getString("SSN");
+            String registrationState = rs.getString("registrationState");
+            String city = rs.getString("city");
+            String state = rs.getString("state");
+            String role = rs.getString("role");
+            String organization = rs.getString("organization");
+            createUserObject(userId, mailId, address, contactNumber, SSN, registrationState, city, state, role, organization);
+        }    
+            
+        if (salesManagerUser!=null) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Wrong Credentials", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -147,4 +175,18 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
         }
         return false;
         }
+    
+    private void createUserObject(String userId, String mailId, String address, String contactNumber, String SSN, String registrationState, String city, String state, String role, String organization) {
+        salesManagerUser=new User();
+        salesManagerUser.setUserId(userId);
+        salesManagerUser.setMailId(mailId);
+        salesManagerUser.setAddress(address);
+        salesManagerUser.setContactNumber(contactNumber);
+        salesManagerUser.setSSN(SSN);
+        salesManagerUser.setRegistrationState(registrationState);
+        salesManagerUser.setCity(city);
+        salesManagerUser.setState(state);
+        salesManagerUser.setRole(role);
+        salesManagerUser.setOrganization(organization);
+    }
 }

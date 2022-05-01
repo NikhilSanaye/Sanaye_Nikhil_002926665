@@ -29,10 +29,11 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnManageSuppliers2" min="-2" max="-2" attributes="0"/>
                   <Component id="btnManageSuppliers1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnManageSuppliers" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,7 +46,9 @@
               <Component id="btnManageSuppliers" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnManageSuppliers1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="429" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnManageSuppliers2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,7 +68,7 @@
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Sales manager&apos;s Work Area"/>
+        <Property name="text" type="java.lang.String" value="Promotion manager&apos;s Work Area"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnManageSuppliers1">
@@ -74,6 +77,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageSuppliers1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnManageSuppliers2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create promotions &gt;&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageSuppliers2ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

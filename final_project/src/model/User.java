@@ -21,7 +21,16 @@ public class User {
     private String registrationState;
     private String city;
     private String state;
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
     private String country;
+    private String organization;
 
     public String getCountry() {
         return country;

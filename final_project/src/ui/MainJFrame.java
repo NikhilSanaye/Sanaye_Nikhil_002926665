@@ -10,7 +10,7 @@ import model.SupplierDirectory;
 import ui.AdminRole.AdminLoginJPanel;
 import ui.AdminRole.AdminWorkAreaJPanel;
 import ui.CustomerRole.CustomerLoginJPanel;
-import ui.SalesManager.SalesManagerJPanel;
+import ui.SalesManager.SalesManagerLoginJPanel;
 import ui.SupplierRole.SupplierLoginJPanel;
 import ui.logistics.LogisticsLoginJPanel;
 
@@ -172,7 +172,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnSupplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplier1ActionPerformed
         // TODO add your handling code here:
-        SalesManagerJPanel sljp = new SalesManagerJPanel(userProcessContainer, supplierDirectory);
+        SalesManagerLoginJPanel sljp = new SalesManagerLoginJPanel(userProcessContainer, supplierDirectory);
         userProcessContainer.add("SupplierLoginJPanel", sljp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
