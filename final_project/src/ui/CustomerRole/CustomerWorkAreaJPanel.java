@@ -122,7 +122,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnMyOrders1.setText("Returns/Refunds");
+        btnMyOrders1.setText("Complaints?");
         btnMyOrders1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMyOrders1ActionPerformed(evt);
@@ -165,7 +165,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         customerUserProcessContainer.setBackground(new java.awt.Color(255, 204, 204));
         customerUserProcessContainer.setLayout(new java.awt.CardLayout());
 
-        firstjPanel.setBackground(new java.awt.Color(51, 255, 102));
+        firstjPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton4.setText("1");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -323,8 +323,8 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnMyOrders1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyOrders1ActionPerformed
         // TODO add your handling code here:
-        MyOrdersJPanel mojp = new MyOrdersJPanel(userProcessContainer, loggedInUser);
-        customerUserProcessContainer.add("MyOrdersJPanel", mojp);
+        RefundReturnJPanel rrjp = new RefundReturnJPanel(userProcessContainer, loggedInUser);
+        customerUserProcessContainer.add("RefundReturnJPanel", rrjp);
         CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
         layout.next(customerUserProcessContainer);
     }//GEN-LAST:event_btnMyOrders1ActionPerformed

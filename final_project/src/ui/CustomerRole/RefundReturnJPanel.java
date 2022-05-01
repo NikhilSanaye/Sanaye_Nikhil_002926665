@@ -49,10 +49,11 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         for(int i=rowCount-1;i>=0;i--){
             model.removeRow(i);
         }
-        for (Order o : orderList) {
-            Object row[] = new Object[2];
-            row[0] = o.getOrderId();
-            row[1] = o.getDeliveryState();
+        for (Consignment c : consignmentList) {
+            Object row[] = new Object[3];
+            row[0] = c;
+            row[1] = c.getDeliveryState();
+            row[2] = c.getProductName();
             model.addRow(row);
         }
     }
@@ -63,9 +64,9 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         supplierTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        btnView1 = new javax.swing.JButton();
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +76,7 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Order Id", "Delivery Status", "Product name"
+                "Consignment Id", "Delivery Status", "Product name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -99,14 +100,7 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRemove.setText("Delete");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
-            }
-        });
-
-        btnView.setText("View Products");
+        btnView.setText("Raise Complaint/Request for return or replacement");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
@@ -117,6 +111,13 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Completed Orders");
 
+        btnView1.setText("Provide Feedback");
+        btnView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,21 +125,18 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(btnView)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemove))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnView1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRemove, btnView});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -149,10 +147,10 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView)
-                    .addComponent(btnRemove))
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addComponent(btnView)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnView1)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,18 +168,6 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_btnViewActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-
-        int row = supplierTable.getSelectedRow();
-        if(row<0){
-            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        User s = (User) supplierTable.getValueAt(row, 0);
-        supplierDirectory.removeSupplier(s);
-        refreshTable();
-    }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
@@ -207,8 +193,8 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnView;
+    private javax.swing.JButton btnView1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable supplierTable;
@@ -243,8 +229,9 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
             String orderDate = rs.getString("orderDate");
             String RemainingDeliveryDays = rs.getString("RemainingDeliveryDays");
             String mailId = rs.getString("mailId");
-            String country = rs.getString("country");
-            createConsingnmentObject(orderId, Address, City, State, deliveryState,orderDate, RemainingDeliveryDays, mailId, country);
+            String country = rs.getString("country");    
+            
+            createOrderObject(orderId, Address, City, State, deliveryState,orderDate, RemainingDeliveryDays, mailId, country);
         } 
         connection.close();
         } catch (Exception exception) {
@@ -252,36 +239,38 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void createConsingnmentObject(int orderId, String Address, String City, String State, String deliveryState, String orderDate, String RemainingDeliveryDays, String mailId, String country) {
-        consignment=new Consignment();  
+    private void createOrderObject(int orderId, String Address, String City, String State, String deliveryState, String orderDate, String RemainingDeliveryDays, String mailId, String country) {
+        order=new Order();  
         
-        consignment.setOrderId(orderId);
-        consignment.setAddress(Address);
-        consignment.setCity(City);
-        consignment.setState(State);
-        consignment.setDeliveryState(deliveryState);
-        consignment.setOrderDate(orderDate);
-        consignment.setRemainingDeliveryDays(RemainingDeliveryDays);
-        consignment.setMailId(mailId);
-        consignment.setCountry(country);
+        order.setOrderId(orderId);
+        order.setAddress(Address);
+        order.setCity(City);
+        order.setState(State);
+        order.setDeliveryState(deliveryState);
+        order.setOrderDate(orderDate);
+        order.setRemainingDeliveryDays(RemainingDeliveryDays);
+        order.setMailId(mailId);
+        order.setCountry(country);
         
-        
-        
+        //int itemNumber= calculateNumberOfItemsInOrder(orderId);
+        //for(int i=0;i<itemNumber;i++){
+            fetchOrderItemsFromOrderId(order);
+        //}   
     }
     
-    public void fetchOrderItemsFromOrderId(int orderId){
+    public void fetchOrderItemsFromOrderId(Order order){
        try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from orderitems where orderId='"+orderId+"'";     
+        String query = "Select * from orderitems where orderId='"+order.getOrderId()+"'";     
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         while(rs.next()) {
             String productId = rs.getString("productId");
-            String quantity = rs.getString("quantity");
+            int quantity = rs.getInt("quantity");
             String description = rs.getString("productDescription");
-            String unitPrice = rs.getString("unitPrice");
+            Double unitPrice = rs.getDouble("unitPrice");
             String productName = rs.getString("productName");
-            createOrderItemsObject(productId, quantity, description, unitPrice, productName);
+            createConsignmentObject(order,productId, quantity, description, unitPrice, productName);
         } 
         connection.close();
         } catch (Exception exception) {
@@ -289,8 +278,41 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         } 
     }
 
-    private void createOrderItemsObject(String productId, String quantity, String description, String unitPrice, String productName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private int calculateNumberOfItemsInOrder(int orderId) {
+        int itemNumber=0;
+        try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "Select count(*) count from orderitems where orderId='"+orderId+"'";     
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        if(rs.next()) {
+            itemNumber = rs.getInt("count");            
+        } 
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } 
+        return itemNumber;
+    }
+
+    private void createConsignmentObject(Order order, String productId, int quantity, String description, double unitPrice, String productName) {
+        Consignment c= new Consignment();
+        c.setOrderId(order.getOrderId());
+        c.setAddress(order.getAddress());
+        c.setCity(order.getCity());
+        c.setState(order.getState());
+        c.setDeliveryState(order.getDeliveryState());
+        c.setOrderDate(order.getOrderDate());
+        c.setRemainingDeliveryDays(order.getRemainingDeliveryDays());
+        c.setCountry(order.getCountry());
+        c.setMailId(order.getMailId());
+        c.setProductId(productId);
+        c.setProductName(productName);
+        c.setQuantity(quantity);
+        c.setDescription(description);
+        c.setUnitPrice(unitPrice);
+        
+        consignmentList.add(c);
     }
 
 

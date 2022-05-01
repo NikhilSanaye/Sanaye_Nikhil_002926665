@@ -241,7 +241,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         int orderId= returnMaxOrderId();
         
         order=new Order();
-        order.setOrderId(String.valueOf(orderId));
+        order.setOrderId((orderId));
         order.setAddress(loggedInUser.getAddress());
         order.setCity(loggedInUser.getCity());
         order.setState(loggedInUser.getState());
@@ -249,6 +249,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         order.setMailId(loggedInUser.getMailId());
         order.setDeliveryState("Order placed");
         order.setOrderDate(getCurrentDate());
+        order.setCountry(loggedInUser.getCountry());
         
         for(int i=0;i<orderItemList.size();i++){
             orderItemList.get(i).setOrderId(order.getOrderId());

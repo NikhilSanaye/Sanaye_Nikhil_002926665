@@ -210,8 +210,8 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
     private void placeOrderItemsInDB(OrderItems orderItem) {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "INSERT INTO orderitems(`orderId`, `productId`, `quantity`,`productDescription`)" 
-                + " VALUES ('"+orderItem.getOrderId()+"','"+orderItem.getProductId()+"','"+orderItem.getQuantity()+"','"+orderItem.getDescription()+"')";    
+        String query = "INSERT INTO orderitems(`orderId`, `productId`, `quantity`,`productDescription`,`productName`,`unitPrice`)" 
+                + " VALUES ('"+orderItem.getOrderId()+"','"+orderItem.getProductId()+"','"+orderItem.getQuantity()+"','"+orderItem.getDescription()+"','"+orderItem.getProductName()+"','"+orderItem.getUnitPrice()+"')";    
         
         Statement st = connection.createStatement();
         int rs = st.executeUpdate(query);

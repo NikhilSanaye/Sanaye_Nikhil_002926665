@@ -39,6 +39,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         this.cart=cart;
         this.orderItemsList=orderItemsList;
         refreshTable();
+        prodQuantity.setValue(1);
     }
     
     
