@@ -115,8 +115,18 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
 
         // TODO add your handling code here:
         if(validateUser()){
+            
+        if(loggedInUser.getRole().equals("admin")){    
         AdminWorkAreaJPanel awajp = new AdminWorkAreaJPanel(userProcessContainer, loggedInUser);
         userProcessContainer.add("AdminWorkAreaJPanel",awajp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        }
+        }
+        
+        if(loggedInUser.getRole().equals("adminsuplierapprover")){
+        AdminSupplierApproverAreaJPanel asaajp = new AdminSupplierApproverAreaJPanel(userProcessContainer, loggedInUser);
+        userProcessContainer.add("AdminSupplierApproverAreaJPanel",asaajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
@@ -136,7 +146,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
     private boolean validateUser() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUserid.getText()+"' and password='"+password+"' and role='administrator'";     
+        String query = "Select * from users where userId='"+txtUserid.getText()+"' and password='"+password+"'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
             
@@ -149,7 +159,8 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
             String registrationState = rs.getString("registrationState");
             String city = rs.getString("city");
             String state = rs.getString("state");
-            createUserObject(userId, mailId, address, contactNumber, SSN, registrationState, city, state);
+             String role = rs.getString("role");
+            createUserObject(userId, mailId, address, contactNumber, SSN, registrationState, city, state,role);
         }
             
         if (loggedInUser!=null) {
@@ -165,7 +176,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
         return false;
         }
     
-        private void createUserObject(String userId, String mailId, String address, String contactNumber, String SSN, String registrationState, String city, String state) {
+        private void createUserObject(String userId, String mailId, String address, String contactNumber, String SSN, String registrationState, String city, String state, String role) {
         loggedInUser= new User();
         loggedInUser.setUserId(userId);
         loggedInUser.setMailId(mailId);
@@ -175,6 +186,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
         loggedInUser.setRegistrationState(registrationState);
         loggedInUser.setCity(city);
         loggedInUser.setState(state);
+        loggedInUser.setRole(role);
     }
     
 }

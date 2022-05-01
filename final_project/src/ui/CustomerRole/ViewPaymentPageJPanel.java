@@ -46,7 +46,7 @@ public class ViewPaymentPageJPanel extends javax.swing.JPanel {
      */
     
     public void displayData(){
-        txtAmount.setText(String.valueOf(totalAmount));
+        
         
     }
 

@@ -128,8 +128,23 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
         userProcessContainer.add("PromotionManagerWorkAreaJPanel",pmwajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer); 
+        }
+        
+        if(salesManagerUser.getRole().equals("usermanager")){    
+        UserManagerWorkAreaJPanel umjp = new UserManagerWorkAreaJPanel(userProcessContainer, salesManagerUser);
+        userProcessContainer.add("UserManagerWorkAreaJPanel",umjp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
         } 
-        if(!salesManagerUser.getRole().equals("salesmanager") && !salesManagerUser.getRole().equals("promotionmanager")){
+        
+        if(salesManagerUser.getRole().equals("deliverymanager")){    
+        DeliveryManagerWorkAreaJPanel umjp = new DeliveryManagerWorkAreaJPanel(userProcessContainer, salesManagerUser);
+        userProcessContainer.add("DeliveryManagerWorkAreaJPanel",umjp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer); 
+        } 
+        
+        if(!salesManagerUser.getRole().equals("salesmanager") && !salesManagerUser.getRole().equals("promotionmanager") && !salesManagerUser.getRole().equals("usermanager") && !salesManagerUser.getRole().equals("deliverymanager") ){
             JOptionPane.showMessageDialog(null, "Invalid role", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
         }
