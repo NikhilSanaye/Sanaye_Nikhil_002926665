@@ -3,7 +3,9 @@ package ui.SupplierRole;
 import java.awt.CardLayout;
 import ui.AdminRole.ManageSuppliersJPanel;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JPanel;
+import model.OrderItems;
 import model.Product;
 
 /**
@@ -14,6 +16,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Product product;
+    private List<OrderItems> orderItemsList;
     public ViewProductDetailJPanel(JPanel upc, Product p) {
         initComponents();
         userProcessContainer = upc;
