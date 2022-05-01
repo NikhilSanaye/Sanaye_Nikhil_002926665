@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Order;
+import model.OrderItems;
 import model.Supplier;
 
 /**
@@ -26,16 +27,17 @@ public class OrganizationOrdersJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
     private User salesUser;
-    private Order order;
-    public ArrayList<Order> orderList;
+    private OrderItems orderItems;
+    public ArrayList<OrderItems> orderList;
     
     public OrganizationOrdersJPanel(JPanel upc, User salesUser) {
-        this.orderList = new ArrayList<Order>();
+        this.orderList = new ArrayList<OrderItems>();
         initComponents();
         userProcessContainer = upc;
         this.salesUser=salesUser;
         refreshTable();
     }
+
 
 
   
@@ -48,10 +50,10 @@ public class OrganizationOrdersJPanel extends javax.swing.JPanel {
         for(int i=rowCount-1;i>=0;i--){
             model.removeRow(i);
         }
-        for (Order o : orderList) {
+        for (OrderItems o : orderList) {
             Object row[] = new Object[2];
-            row[0] = o.getOrderId();
-            row[1] = o.getDeliveryState();
+            row[0] = o;
+            row[1] = o.productName;
             model.addRow(row);
         }
     }
@@ -210,20 +212,19 @@ public class OrganizationOrdersJPanel extends javax.swing.JPanel {
     private void populateOrdersFromDB() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from orders where mailId='"+loggedInUser.getMailId()+"'";     
+        String query = "Select * from orderitems where organization='"+salesUser.getOrganization()+"'";     
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         while(rs.next()) {
             String orderId = rs.getString("orderId");
-            String Address = rs.getString("Address");
-            String City = rs.getString("City");
-            String State = rs.getString("State");
-            String deliveryState = rs.getString("deliveryState");
-            String orderDate = rs.getString("orderDate");
-            String RemainingDeliveryDays = rs.getString("RemainingDeliveryDays");
-            String mailId = rs.getString("mailId");
-            String country = rs.getString("country");
-            createOrderObject(orderId, Address, City, State, deliveryState, orderDate, RemainingDeliveryDays, mailId, country);
+            String productId = rs.getString("productId");
+            int quantity = rs.getInt("quantity");
+            String productDescription = rs.getString("productDescription");
+            String productName = rs.getString("productName");
+            Double unitPrice = rs.getDouble("unitPrice");
+            String organization = rs.getString("organization");
+
+            createOrderItemsObject(orderId, productId, quantity, productDescription, productName, unitPrice, organization);
         } 
         connection.close();
         } catch (Exception exception) {
@@ -231,19 +232,18 @@ public class OrganizationOrdersJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void createOrderObject(String orderId, String Address, String City, String State, String deliveryState, String orderDate, String RemainingDeliveryDays, String mailId, String country) {
-        order=new Order();
-        order.setOrderId(Integer.parseInt(orderId));
-        order.setAddress(Address);
-        order.setCity(City);
-        order.setState(State);
-        order.setDeliveryState(deliveryState);
-        order.setOrderDate(orderDate);
-        order.setRemainingDeliveryDays(RemainingDeliveryDays);
-        order.setMailId(mailId);
-        order.setCountry(country);
+    public void createOrderItemsObject(String orderId, String productId, int quantity, String productDescription, String productName, Double unitPrice, String organization) {
+        orderItems=new OrderItems();
+        orderItems.setOrderId(Integer.parseInt(orderId));
+        orderItems.setProductId(productId);
+        orderItems.setQuantity(quantity);
+        orderItems.setDescription(productDescription);
+        orderItems.setProductName(productName);
+        orderItems.setUnitPrice(unitPrice);
+        orderItems.setOrganization(organization);
+
         
-        orderList.add(order);
+        orderList.add(orderItems);
     }
 
 }

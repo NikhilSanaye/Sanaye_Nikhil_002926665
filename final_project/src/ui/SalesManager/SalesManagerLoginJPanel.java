@@ -116,13 +116,13 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
         if(validateSalesUser()){
             
         if(salesManagerUser.getRole().equals("salesmanager")){    
-        SalesManagerWorkAreaJPanel smwajp = new SalesManagerWorkAreaJPanel(userProcessContainer, supplierDirectory);
+        SalesManagerWorkAreaJPanel smwajp = new SalesManagerWorkAreaJPanel(userProcessContainer, salesManagerUser);
         userProcessContainer.add("SalesManagerWorkAreaJPanel",smwajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer); 
         }
         if(salesManagerUser.getRole().equals("promotionmanager")){    
-        PromotionManagerWorkAreaJPanel pmwajp = new PromotionManagerWorkAreaJPanel(userProcessContainer, supplierDirectory);
+        PromotionManagerWorkAreaJPanel pmwajp = new PromotionManagerWorkAreaJPanel(userProcessContainer, salesManagerUser);
         userProcessContainer.add("PromotionManagerWorkAreaJPanel",pmwajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer); 

@@ -16,6 +16,20 @@ public class OrderItems {
     public int quantity;
     public String description;
     public double unitPrice;
+    public String organization;
+    
+    @Override
+    public String toString(){
+        return String.valueOf(orderId);
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
 
     public String getProductName() {
         return productName;
