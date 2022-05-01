@@ -266,7 +266,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         customerUserProcessContainer.removeAll();
-        customerUserProcessContainer.add(new BrowseProductsJPanel(orderItemList));
+        customerUserProcessContainer.add(new BrowseProductsJPanel(customerUserProcessContainer,orderItemList));
         customerUserProcessContainer.repaint();
         customerUserProcessContainer.revalidate();
     }//GEN-LAST:event_btnBrowseProductsActionPerformed

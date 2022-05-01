@@ -56,11 +56,12 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
            
         for (OrderItems o : orderItemList) {
-            Object row[] = new Object[4];
-            row[0] = o.getProductName();
-            row[1] = o.getUnitPrice();
-            row[2] = o.getQuantity();
-            row[3] = String.valueOf(o.getUnitPrice()*o.getQuantity());
+            Object row[] = new Object[5];
+            row[0] = o;
+            row[1] = o.getProductName();
+            row[2] = o.getUnitPrice();
+            row[3] = o.getQuantity();
+            row[4] = String.valueOf(o.getUnitPrice()*o.getQuantity());
             model.addRow(row);
         }
     }
@@ -112,7 +113,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Item Name", "Price", "Quantity", "Total Amount"
+                "ID", "Item Name", "Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -185,14 +186,45 @@ public class ManageCartJPanel extends javax.swing.JPanel {
 
     private void btnModifyQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyQuantityActionPerformed
         // TODO add your handling code here:
+         int row = tblCart.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        OrderItems orderItem = (OrderItems) tblCart.getValueAt(row, 0);
+        orderItem.setQuantity(Integer.parseInt(txtNewQuantity.getText()));
+       
+        JOptionPane.showMessageDialog(this, "Item quantity updates");
+        
     }//GEN-LAST:event_btnModifyQuantityActionPerformed
 
     private void btnRemoveOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOrderItemActionPerformed
+        int row = tblCart.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        OrderItems orderItem = (OrderItems) tblCart.getValueAt(row, 0);
+        orderItemList.remove(orderItem);
+        JOptionPane.showMessageDialog(this, "Item Removed from the cart");
 
+        
+        refreshTable();
     }//GEN-LAST:event_btnRemoveOrderItemActionPerformed
 
     private void btnViewOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderItemActionPerformed
+       int row = tblCart.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        OrderItems orderItem = (OrderItems) tblCart.getValueAt(row, 0);
 
+        
+        ViewOrderItemDetailJPanel voidjp = new ViewOrderItemDetailJPanel(userProcessContainer,orderItem);
+        userProcessContainer.add("ViewOrderItemDetailJPanel",voidjp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewOrderItemActionPerformed
 
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed

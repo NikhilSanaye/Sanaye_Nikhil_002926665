@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.OrderItems;
 import model.ProductCatalog;
+import model.Supplier;
+import ui.AdminRole.ViewSupplierCatalogJPanel;
 
 
 /**
@@ -33,13 +35,18 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     ProductCatalog pcatalog= new ProductCatalog();
     ProductCatalog cart;
     List<OrderItems> orderItemsList;
+    List<Supplier> supplierList;
+    
+    JPanel customerUserProcessContainer;
 
-    public BrowseProductsJPanel(List<OrderItems> orderItemsList) {
+    public BrowseProductsJPanel(JPanel customerUserProcessContainer,List<OrderItems> orderItemsList) {
         initComponents();
+        this.customerUserProcessContainer=customerUserProcessContainer;
         this.cart=cart;
         this.orderItemsList=orderItemsList;
         refreshTable();
         prodQuantity.setValue(1);
+        loadSupplierDropDown();
     }
     
     
@@ -58,6 +65,32 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+    
+    
+     private void loadSupplierDropDown(){
+         getSupplierList();
+         
+         
+         
+         
+     }
+     
+     private void getSupplierList(){
+           try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "Select * from productssuppliers";     
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        while(rs.next()) {
+            Supplier s=new Supplier();
+            s.setUserId(rs.getString("suppliername"));
+            supplierList.add(s);
+        } 
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+     }
 
     
 
@@ -218,18 +251,62 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSupplierActionPerformed
-        // TODO add your handling code here:
+        
         
     }//GEN-LAST:event_cmbSupplierActionPerformed
 
     private void btnProductDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductDetailsActionPerformed
-        // TODO add your handling code here:
+        int row = tblProductCatalog.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Product p = (Product)tblProductCatalog.getValueAt(row,0);
+        ViewProductDetailCustJPanel vpdc = new ViewProductDetailCustJPanel(customerUserProcessContainer,orderItemsList,p);
+        customerUserProcessContainer.add("ViewSupplier", vpdc);
+        CardLayout layout = (CardLayout) customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
         
     }//GEN-LAST:event_btnProductDetailsActionPerformed
 
     private void btnSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchProductActionPerformed
+        String searchKey=txtSearch.getText();
+        Product p=searchProduct(Integer.parseInt(searchKey));
+        
+        viewSearchedProduct vsp = new viewSearchedProduct(customerUserProcessContainer,p);
+        customerUserProcessContainer.add("viewSearchedProduct",vsp);
+        CardLayout layout = (CardLayout)customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
         
     }//GEN-LAST:event_btnSearchProductActionPerformed
+    
+    private Product searchProduct(int searchKey){
+        Product p=new Product();
+        
+        try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        String query = "Select * from products where productId="+searchKey;     
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        while(rs.next()) {
+            p.setProductId((rs.getInt("productId")));
+            p.setProdName(rs.getString("productName"));
+            p.setPrice(rs.getString("price"));
+            p.setDescription(rs.getString("description"));
+            p.setSupplier(rs.getString("supplier"));
+            p.setCategory(rs.getString("category"));
+         } 
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        
+        
+        
+        
+        
+       return p; 
+    }
     
     OrderItems orderItem;
     private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
