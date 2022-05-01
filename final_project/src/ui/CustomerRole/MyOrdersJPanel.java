@@ -59,7 +59,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         supplierTable = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
@@ -88,13 +87,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
             supplierTable.getColumnModel().getColumn(1).setPreferredWidth(200);
             supplierTable.getColumnModel().getColumn(1).setMaxWidth(200);
         }
-
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
 
         btnRemove.setText("Delete");
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -128,8 +120,7 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
                         .addComponent(btnRemove))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(86, 86, 86)
                         .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
         );
@@ -140,10 +131,8 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addGap(35, 35, 35)
+                .addComponent(lblTitle)
+                .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,14 +169,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
         refreshTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
         int row = supplierTable.getSelectedRow();
         if(row<0){
@@ -203,7 +184,6 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;

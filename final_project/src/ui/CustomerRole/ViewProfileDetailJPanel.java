@@ -48,7 +48,6 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         lblProductPrice = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         txtMailId = new javax.swing.JTextField();
         lblProductId = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
@@ -78,13 +77,6 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
             }
         });
 
@@ -121,9 +113,7 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnBack)
-                .addGap(172, 172, 172)
+                .addGap(277, 277, 277)
                 .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -153,10 +143,8 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnBack))
-                .addGap(78, 78, 78)
+                .addComponent(lblTitle)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProductName)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,11 +188,6 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
         btnSave.setEnabled(true);
 }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        backAction();
-    }//GEN-LAST:event_btnBackActionPerformed
-
       private void backAction() {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
@@ -220,7 +203,6 @@ public class ViewProfileDetailJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblProductId;

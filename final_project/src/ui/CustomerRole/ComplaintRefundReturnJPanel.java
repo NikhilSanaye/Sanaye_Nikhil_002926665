@@ -21,9 +21,9 @@ import model.Supplier;
  *
  * @author Mihir Mehta / Hechen Gao
  */
-public class RefundReturnJPanel extends javax.swing.JPanel {
+public class ComplaintRefundReturnJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
+    private JPanel customerUserProcessContainer;
     private SupplierDirectory supplierDirectory;
     private User loggedInUser;
     private Order order;
@@ -31,10 +31,10 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
     private Consignment consignment;
     private ArrayList<Consignment> consignmentList= new ArrayList<Consignment>();
     
-    public RefundReturnJPanel(JPanel upc, User loggedInUser) {
+    public ComplaintRefundReturnJPanel(JPanel upc, User loggedInUser) {
         this.orderList = new ArrayList<Order>();
         initComponents();
-        userProcessContainer = upc;
+        customerUserProcessContainer = upc;
         this.loggedInUser=loggedInUser;
         refreshTable();
     }
@@ -63,10 +63,10 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         supplierTable = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
+        btnProductComplaint = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnView1 = new javax.swing.JButton();
+        btnProvideFeedback = new javax.swing.JButton();
+        btnlogisticComplaint = new javax.swing.JButton();
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,17 +93,10 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
             supplierTable.getColumnModel().getColumn(1).setMaxWidth(200);
         }
 
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnProductComplaint.setText("Raise Complaint/Request for return or replacement");
+        btnProductComplaint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
-        btnView.setText("Raise Complaint/Request for return or replacement");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
+                btnProductComplaintActionPerformed(evt);
             }
         });
 
@@ -111,10 +104,17 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Completed Orders");
 
-        btnView1.setText("Provide Feedback");
-        btnView1.addActionListener(new java.awt.event.ActionListener() {
+        btnProvideFeedback.setText("Provide Product Feedback");
+        btnProvideFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnView1ActionPerformed(evt);
+                btnProvideFeedbackActionPerformed(evt);
+            }
+        });
+
+        btnlogisticComplaint.setText("logistic complaints");
+        btnlogisticComplaint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlogisticComplaintActionPerformed(evt);
             }
         });
 
@@ -127,74 +127,70 @@ public class RefundReturnJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(86, 86, 86)
                         .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnView1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnProvideFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProductComplaint, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnlogisticComplaint, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addGap(35, 35, 35)
+                .addComponent(lblTitle)
+                .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnView)
+                .addComponent(btnProductComplaint)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnView1)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addComponent(btnProvideFeedback)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnlogisticComplaint)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+    private void btnProductComplaintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductComplaintActionPerformed
 
         int row = supplierTable.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
-        ViewSupplierCatalogJPanel vs = new ViewSupplierCatalogJPanel(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        Consignment c = (Consignment)supplierTable.getValueAt(row,0);
+        PostComplaintJPanel pcjp = new PostComplaintJPanel(customerUserProcessContainer, c);
+        customerUserProcessContainer.add("PostComplaintJPanel", pcjp);
+        CardLayout layout = (CardLayout) customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
         
-    }//GEN-LAST:event_btnViewActionPerformed
+    }//GEN-LAST:event_btnProductComplaintActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        int row = supplierTable.getSelectedRow();
+    private void btnProvideFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProvideFeedbackActionPerformed
+       int row = supplierTable.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
-        ViewSupplier vs = new ViewSupplier(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnView1ActionPerformed
+        Consignment c = (Consignment)supplierTable.getValueAt(row,0);
+        ProvideFeedbackJPanel pfjp = new ProvideFeedbackJPanel(customerUserProcessContainer, c);
+        customerUserProcessContainer.add("ProvideFeedbackJPanel", pfjp);
+        CardLayout layout = (CardLayout) customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
+    }//GEN-LAST:event_btnProvideFeedbackActionPerformed
+
+    private void btnlogisticComplaintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogisticComplaintActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnlogisticComplaintActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnView;
-    private javax.swing.JButton btnView1;
+    private javax.swing.JButton btnProductComplaint;
+    private javax.swing.JButton btnProvideFeedback;
+    private javax.swing.JButton btnlogisticComplaint;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable supplierTable;
