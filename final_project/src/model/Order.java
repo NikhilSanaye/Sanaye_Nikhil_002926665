@@ -19,6 +19,11 @@ public class Order {
     public String RemainingDeliveryDays;
     public String Country;
     public String mailId;
+    
+    @Override
+    public String toString(){
+        return String.valueOf(orderId);
+    }
 
     public String getMailId() {
         return mailId;

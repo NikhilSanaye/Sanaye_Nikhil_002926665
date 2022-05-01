@@ -107,7 +107,11 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
 
     private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:ManagePromptionsJPanel
+        ManagePromptionsJPanel mpjp = new ManagePromptionsJPanel(userProcessContainer, salesManagerUser);
+    userProcessContainer.add("ManagePromptionsJPanel", mpjp);
+    CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+    layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliers2ActionPerformed
     
     
