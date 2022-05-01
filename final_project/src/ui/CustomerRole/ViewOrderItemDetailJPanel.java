@@ -5,7 +5,9 @@
 package ui.CustomerRole;
 
 import java.awt.CardLayout;
+import java.util.List;
 import javax.swing.JPanel;
+import model.OrderItems;
 
 /**
  *
@@ -17,10 +19,23 @@ public class ViewOrderItemDetailJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewOrderItemDetailJPanel
      */
-    public ViewOrderItemDetailJPanel() {
+    OrderItems orderItems;
+    private JPanel userProcessContainer;
+    public ViewOrderItemDetailJPanel(JPanel userProcessContainer,OrderItems orderItems) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.orderItems=orderItems;
+        displayData();
         
     }
+    
+    public void  displayData(){
+        txtProductName.setText(orderItems.getProductName());
+        txtProductId.setText(orderItems.getProductId());
+        txtSalesPrice.setText(String.valueOf(orderItems.getUnitPrice()));
+        txtQuantity.setText(String.valueOf(orderItems.getQuantity()));
+        txtTotal.setText(String.valueOf(orderItems.getQuantity()*orderItems.getUnitPrice()));
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,7 +158,9 @@ public class ViewOrderItemDetailJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_btnBackActionPerformed
 
