@@ -27,7 +27,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return prodName; //To change body of generated methods, choose Tools | Templates.
+        return String.valueOf(productId); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Product() {

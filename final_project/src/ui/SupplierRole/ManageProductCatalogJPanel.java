@@ -35,20 +35,22 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         userProcessContainer = upc;
         supplierName = s;
         lblSupplier.setText("Supplier : " + s);
+        populateProductsFromDb();
+        productReviews= new ArrayList<String>();
         refreshTable();
     }
 
     public void refreshTable() {
         
-        productReviews= new ArrayList<String>();
-        populateProductsFromDb();
+        
+       
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
         model.setRowCount(0);
            
         for (Product p : pcatalog.getProductcatalog()) {
             Object row[] = new Object[3];
-            row[0] = p;
-            row[1] = p.getProductId();
+            row[0] = p.getProdName();
+            row[1] = p;
             row[2] = p.getPrice();
             model.addRow(row);
         }
@@ -73,7 +75,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
         lblSupplier.setText("Supplier:");
 
-        tblProductCatalog.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tblProductCatalog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -171,9 +172,11 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Product s = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
+        Product s = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 1);
         //supplier.getProductCatalog().removeProduct(s);
         pcatalog.getProductcatalog().remove(s);
+        JOptionPane.showMessageDialog(this, "Product removed from catalog");
+
         refreshTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -184,7 +187,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Pls select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
-        Product p = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
+        Product p = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 1);
 
         ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(userProcessContainer, p);
         userProcessContainer.add("ViewProductDetailJPanel", vpdjp);
@@ -228,6 +231,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             String discount = rs.getString("discount");
             String reviews = rs.getString("reviews");
             createProductObject(id, productName, price, description, supplier, category, dimension, discount, reviews);
+            pcatalog.getProductcatalog().add(p);
         } 
         connection.close();
         } catch (Exception exception) {
@@ -245,9 +249,8 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         p.setCategory(category);
         p.setDescription(dimension);
         p.setDiscount(discount);
-        productReviews.add(reviews);
+      //  productReviews.add(reviews);
         p.setProductReviews(productReviews);
-        if(!pcatalog.getProductcatalog().contains(p)){
-        pcatalog.getProductcatalog().add(p);}
+        
     }
 }
