@@ -34,7 +34,6 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
 
         btnManageSuppliers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnManageSuppliers1 = new javax.swing.JButton();
         btnManageSuppliers2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
@@ -49,13 +48,6 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Promotion manager's Work Area");
-
-        btnManageSuppliers1.setText("View Sales charts >>");
-        btnManageSuppliers1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageSuppliers1ActionPerformed(evt);
-            }
-        });
 
         btnManageSuppliers2.setText("Create promotions >>");
         btnManageSuppliers2.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +68,6 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnManageSuppliers2)
-                    .addComponent(btnManageSuppliers1)
                     .addComponent(btnManageSuppliers))
                 .addGap(55, 55, 55))
         );
@@ -87,9 +78,7 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(66, 66, 66)
                 .addComponent(btnManageSuppliers)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnManageSuppliers1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers2)
                 .addContainerGap())
         );
@@ -102,10 +91,6 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
     layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
-    private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
-
     private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed
         // TODO add your handling code here:ManagePromptionsJPanel
         ManagePromptionsJPanel mpjp = new ManagePromptionsJPanel(userProcessContainer, salesManagerUser);
@@ -117,7 +102,6 @@ public class PromotionManagerWorkAreaJPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageSuppliers;
-    private javax.swing.JButton btnManageSuppliers1;
     private javax.swing.JButton btnManageSuppliers2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
