@@ -39,6 +39,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     List<OrderItems> orderItemsList;
     List<User> supplierList;
     
+    
     JPanel customerUserProcessContainer;
 
     public BrowseProductsJPanel(JPanel customerUserProcessContainer,List<OrderItems> orderItemsList) {
@@ -55,7 +56,6 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     
     public void refreshTable() {
         
-        populateProductsFromDb();
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
         model.setRowCount(0);
            
@@ -259,7 +259,9 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSupplierActionPerformed
-        
+       String supplierName= cmbSupplier.getSelectedItem().toString();
+
+       populateProductsFromDb(supplierName);        
         
     }//GEN-LAST:event_cmbSupplierActionPerformed
 
@@ -309,11 +311,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
             exception.printStackTrace();
         }
         
-        
-        
-        
-        
-       return p; 
+        return p; 
     }
     
     OrderItems orderItem;
@@ -357,10 +355,11 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
 
-    private void populateProductsFromDb() {
+    private void populateProductsFromDb(String supplierName) {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from products";     
+        
+        String query = "Select * from products where supplier="+supplierName;     
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         while(rs.next()) {
