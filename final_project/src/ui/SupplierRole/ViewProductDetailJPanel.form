@@ -22,27 +22,41 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="206" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace pref="192" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblProductPrice4" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProductPrice3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProductPrice2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProductPrice1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProductId" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProductName" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProductPrice" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSave" min="-2" pref="123" max="-2" attributes="0"/>
-                  <Component id="btnUpdate" min="-2" pref="121" max="-2" attributes="0"/>
-                  <Component id="txtName" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                  <Component id="txtId" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                  <Component id="txtPrice" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtProductName" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtProductId" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtProductPrice" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtDescription" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtDimension" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtCategory" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtSupplier" min="-2" pref="159" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
-              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                      <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
+                      <Component id="btnSave" min="-2" pref="90" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -58,23 +72,41 @@
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblProductName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblProductId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblProductPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtProductPrice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblProductPrice1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDescription" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblProductPrice2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDimension" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblProductPrice3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCategory" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblProductPrice4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="296" max="32767" attributes="0"/>
+              <EmptySpace pref="185" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,7 +125,7 @@
         <Property name="text" type="java.lang.String" value="Product Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtName">
+    <Component class="javax.swing.JTextField" name="txtProductName">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -103,17 +135,12 @@
         <Property name="text" type="java.lang.String" value="Product Price:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPrice">
+    <Component class="javax.swing.JTextField" name="txtProductPrice">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnUpdate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Update Product"/>
-      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProductPriceActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
@@ -124,7 +151,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtId">
+    <Component class="javax.swing.JTextField" name="txtProductId">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -134,10 +161,49 @@
         <Property name="text" type="java.lang.String" value="Product ID:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="lblProductPrice1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Description:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDescription">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProductPrice2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dimension:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDimension">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProductPrice3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Category:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCategory">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProductPrice4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Supplier:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSupplier">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>

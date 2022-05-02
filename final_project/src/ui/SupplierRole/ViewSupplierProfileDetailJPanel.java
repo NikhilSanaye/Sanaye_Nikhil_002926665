@@ -1,5 +1,6 @@
-package ui.CustomerRole;
+package ui.SupplierRole;
 
+import ui.CustomerRole.*;
 import ui.SupplierRole.*;
 import java.awt.CardLayout;
 import ui.AdminRole.ManageSuppliersJPanel;
@@ -16,12 +17,12 @@ import model.User;
  *
  * @author Mihir Mehta / Hechen Gao
  */
-public class ViewProfileDetailJPanel extends javax.swing.JPanel {
+public class ViewSupplierProfileDetailJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private String userName;
     public User user;
-    public ViewProfileDetailJPanel(JPanel upc, String s) {
+    public ViewSupplierProfileDetailJPanel(JPanel upc, String s) {
         initComponents();
         userProcessContainer = upc;
         userName = s;

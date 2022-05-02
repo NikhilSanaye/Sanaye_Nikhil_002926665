@@ -63,7 +63,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         tblProductCatalog = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
 
@@ -102,13 +101,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSearch.setText("Search...");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,9 +126,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                         .addComponent(btnCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(155, 155, 155)
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -161,7 +151,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnView)
-                    .addComponent(btnSearch)
                     .addComponent(btnDelete))
                 .addContainerGap())
         );
@@ -186,14 +175,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         //supplier.getProductCatalog().removeProduct(s);
         refreshTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-
-        SearchForProductJPanel sfpjp = new SearchForProductJPanel(userProcessContainer, supplier1);
-        userProcessContainer.add("SearchForProductJPanel", sfpjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
 
@@ -222,7 +203,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSupplier;
