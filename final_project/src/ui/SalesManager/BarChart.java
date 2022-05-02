@@ -28,8 +28,6 @@ public class BarChart extends javax.swing.JFrame {
         chart.addData(new ModelChart("February", new double[]{600, 750, 90, 150}));
         chart.addData(new ModelChart("March", new double[]{200, 350, 460, 900}));
         chart.addData(new ModelChart("April", new double[]{480, 150, 750, 700}));
-        chart.addData(new ModelChart("May", new double[]{350, 540, 300, 150}));
-        chart.addData(new ModelChart("June", new double[]{190, 280, 81, 200}));
     }
 
     /**

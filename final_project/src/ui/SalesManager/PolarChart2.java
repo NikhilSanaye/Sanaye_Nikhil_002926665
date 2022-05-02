@@ -12,24 +12,20 @@ import java.awt.Color;
  *
  * @author RAVEN
  */
-public class PolarChart extends javax.swing.JFrame {
+public class PolarChart2 extends javax.swing.JFrame {
 
     /**
      * Creates new form Test
      */
-    public PolarChart() {
+    public PolarChart2() {
         initComponents();
         getContentPane().setBackground(new Color(255, 255, 255));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(52, 148, 203), "Nike", 60));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(175, 67, 237), "Adidas", 50));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(87, 218, 137), "Apple", 30));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(120, 67, 237), "Dell", 10));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(10, 218, 137), "Hp", 30));
-        
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(10, 218, 137), "Samsung", 30));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(20, 67, 237), "Asus", 10));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(30, 218, 137), "Puma", 30));
-        
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(52, 148, 52), "Smartphones", 60));
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(175, 67, 23), "Shoes", 50));
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(87, 190, 137), "Laptops", 30));
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(120, 67, 230), "Households", 10));
+        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(10, 18, 80), "Groceries", 30));
+                
     }
 
     /**
@@ -108,14 +104,18 @@ public class PolarChart extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PolarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PolarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PolarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PolarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -124,7 +124,7 @@ public class PolarChart extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PolarChart().setVisible(true);
+                new PolarChart2().setVisible(true);
             }
         });
     }

@@ -5,31 +5,28 @@
  */
 package ui.SalesManager;
 
-import chart.ModelPolarAreaChart;
+import com.raven.chart.ModelChart;
 import java.awt.Color;
 
 /**
  *
  * @author RAVEN
  */
-public class PolarChart extends javax.swing.JFrame {
+public class BarChart2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Test
+     * Creates new form Main
      */
-    public PolarChart() {
+    public BarChart2() {
         initComponents();
-        getContentPane().setBackground(new Color(255, 255, 255));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(52, 148, 203), "Nike", 60));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(175, 67, 237), "Adidas", 50));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(87, 218, 137), "Apple", 30));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(120, 67, 237), "Dell", 10));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(10, 218, 137), "Hp", 30));
-        
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(10, 218, 137), "Samsung", 30));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(20, 67, 237), "Asus", 10));
-        polarAreaChart.addItem(new ModelPolarAreaChart(new Color(30, 218, 137), "Puma", 30));
-        
+        getContentPane().setBackground(new Color(250, 250, 250));
+        chart.addLegend("Income", new Color(245, 189, 135));
+        chart.addLegend("Expense", new Color(135, 189, 245));
+        chart.addLegend("Profit", new Color(189, 135, 245));
+        chart.addLegend("Cost", new Color(139, 229, 222));
+        chart.addData(new ModelChart("2020", new double[]{250, 150, 80, 89}));
+        chart.addData(new ModelChart("2021", new double[]{300, 750, 90, 450}));
+        chart.addData(new ModelChart("2022", new double[]{400, 350, 460, 800}));
     }
 
     /**
@@ -41,7 +38,7 @@ public class PolarChart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        polarAreaChart = new chart.PolarAreaChart();
+        chart = new com.raven.chart.Chart();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +48,9 @@ public class PolarChart extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Refresh");
+        chart.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+
+        jButton1.setText("Refresh And Clear");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -62,21 +61,21 @@ public class PolarChart extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(117, 117, 117))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(chart, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(polarAreaChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(chart, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(97, 97, 97))
         );
 
         pack();
@@ -84,17 +83,24 @@ public class PolarChart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        polarAreaChart.start();
+        chart.start();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        polarAreaChart.start();
+        chart.clear();
+        chart.addData(new ModelChart("January", new double[]{500, 200, 80, 89}));
+        chart.addData(new ModelChart("February", new double[]{600, 750, 90, 150}));
+        chart.addData(new ModelChart("March", new double[]{200, 350, 460, 900}));
+        chart.addData(new ModelChart("April", new double[]{480, 150, 750, 700}));
+        chart.addData(new ModelChart("May", new double[]{350, 540, 300, 150}));
+        chart.addData(new ModelChart("June", new double[]{190, 280, 81, 200}));
+        chart.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void runChart() {
+    public static void ShowBarChart() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -108,14 +114,18 @@ public class PolarChart extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PolarChart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarChart2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -124,13 +134,13 @@ public class PolarChart extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PolarChart().setVisible(true);
+                new BarChart2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.raven.chart.Chart chart;
     private javax.swing.JButton jButton1;
-    private chart.PolarAreaChart polarAreaChart;
     // End of variables declaration//GEN-END:variables
 }

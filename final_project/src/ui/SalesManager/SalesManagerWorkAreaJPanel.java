@@ -38,8 +38,9 @@ public class SalesManagerWorkAreaJPanel extends javax.swing.JPanel {
         btnManageSuppliers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnManageSuppliers1 = new javax.swing.JButton();
-        btnManageSuppliers2 = new javax.swing.JButton();
         btnManageSuppliers3 = new javax.swing.JButton();
+        btnManageSuppliers2 = new javax.swing.JButton();
+        btnManageSuppliers4 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -54,17 +55,10 @@ public class SalesManagerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sales manager's Work Area");
 
-        btnManageSuppliers1.setText("View Sales charts >>");
+        btnManageSuppliers1.setText("View Sales By Brand >>");
         btnManageSuppliers1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageSuppliers1ActionPerformed(evt);
-            }
-        });
-
-        btnManageSuppliers2.setText("View Income chart >>");
-        btnManageSuppliers2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageSuppliers2ActionPerformed(evt);
             }
         });
 
@@ -75,21 +69,36 @@ public class SalesManagerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageSuppliers2.setText("View Sales By Category >>");
+        btnManageSuppliers2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageSuppliers2ActionPerformed(evt);
+            }
+        });
+
+        btnManageSuppliers4.setText("View Yearly chart >>");
+        btnManageSuppliers4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageSuppliers4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManageSuppliers3)
-                    .addComponent(btnManageSuppliers2)
-                    .addComponent(btnManageSuppliers1)
-                    .addComponent(btnManageSuppliers))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageSuppliers3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageSuppliers4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
@@ -101,10 +110,12 @@ public class SalesManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageSuppliers)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnManageSuppliers1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(9, 9, 9)
                 .addComponent(btnManageSuppliers2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnManageSuppliers3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnManageSuppliers4)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,17 +139,23 @@ public class SalesManagerWorkAreaJPanel extends javax.swing.JPanel {
     //layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
 
-    private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed
-        // TODO add your handling code here:showPieChart
-        Main p = new Main();
-        p.showChart();
-    }//GEN-LAST:event_btnManageSuppliers2ActionPerformed
-
     private void btnManageSuppliers3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers3ActionPerformed
         // TODO add your handling code here:
         BarChart m = new BarChart();
         m.ShowBarChart();
     }//GEN-LAST:event_btnManageSuppliers3ActionPerformed
+
+    private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed
+        // TODO add your handling code here:
+        PolarChart2 test = new PolarChart2();
+        test.runChart();
+    }//GEN-LAST:event_btnManageSuppliers2ActionPerformed
+
+    private void btnManageSuppliers4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers4ActionPerformed
+        // TODO add your handling code here:
+        BarChart2 m = new BarChart2();
+        m.ShowBarChart();
+    }//GEN-LAST:event_btnManageSuppliers4ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,6 +163,7 @@ public class SalesManagerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageSuppliers1;
     private javax.swing.JButton btnManageSuppliers2;
     private javax.swing.JButton btnManageSuppliers3;
+    private javax.swing.JButton btnManageSuppliers4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     
