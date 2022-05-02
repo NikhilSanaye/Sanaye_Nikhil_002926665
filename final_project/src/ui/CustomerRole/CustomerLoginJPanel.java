@@ -38,7 +38,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtMailId = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
@@ -49,10 +48,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         passwordField = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Customer's Work Area");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,9 +87,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,15 +103,13 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel4)
                                     .addComponent(btnLogin)
                                     .addComponent(passwordField))
-                                .addGap(0, 214, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel2)
                 .addGap(108, 108, 108)
                 .addComponent(jLabel3)
@@ -134,7 +125,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jLabel5))
-                .addContainerGap())
+                .addContainerGap(62, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -151,11 +142,11 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         password= new String(passwordField.getPassword());
         if(validateUser()){
         CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer, loggedInUser);
-        CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1600);
+        CustomerWorkAreaJPanel.setBounds(0, 0, 1100, 1800);
         CustomerWorkAreaJPanel.setBackground(Color.WHITE);
         JOptionPane jop = new JOptionPane();
         JDialog dialog = jop.createDialog("My Dialog");
-        dialog.setSize(1100, 700);
+        dialog.setSize(1100, 800);
         dialog.setLocation(0,0);
         dialog.setContentPane(CustomerWorkAreaJPanel);
         dialog.setVisible(true);   
@@ -173,7 +164,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

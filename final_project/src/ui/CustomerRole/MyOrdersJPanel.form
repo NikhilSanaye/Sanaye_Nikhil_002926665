@@ -24,14 +24,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnUpdateOrder" min="-2" pref="144" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="orderTableJPanel" min="-2" pref="861" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                       <Component id="lblTitle" min="-2" pref="385" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="orderTableJPanel" alignment="0" min="-2" pref="689" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,7 +50,7 @@
                   <Component id="btnViewOrder" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUpdateOrder" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="321" max="32767" attributes="0"/>
+              <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
