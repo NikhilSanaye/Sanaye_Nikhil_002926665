@@ -214,7 +214,6 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         orderItemList.remove(orderItem);
         JOptionPane.showMessageDialog(this, "Item Removed from the cart");
 
-        
         refreshTable();
     }//GEN-LAST:event_btnRemoveOrderItemActionPerformed
 
