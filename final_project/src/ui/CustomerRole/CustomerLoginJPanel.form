@@ -44,14 +44,10 @@
                                   <Component id="txtMailId" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnLoginGuest" min="-2" pref="156" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnLogin" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtPassword" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="214" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -76,10 +72,7 @@
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Component id="txtPassword" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLoginGuest" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -144,14 +137,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="New User? Please register-&gt;"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnLoginGuest">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Continue as Guest"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginGuestActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPassword">
       <Events>

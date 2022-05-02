@@ -45,7 +45,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnLoginGuest = new javax.swing.JButton();
         txtPassword = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
@@ -84,13 +83,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("New User? Please register->");
 
-        btnLoginGuest.setText("Continue as Guest");
-        btnLoginGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginGuestActionPerformed(evt);
-            }
-        });
-
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
@@ -121,12 +113,9 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                                     .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnLogin)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnLoginGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnLogin)
                                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 214, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,9 +134,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
-                    .addComponent(btnLoginGuest))
+                .addComponent(btnLogin)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -182,19 +169,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void btnLoginGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginGuestActionPerformed
-        User guestUser=new User();
-        CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer,guestUser);
-        CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
-        CustomerWorkAreaJPanel.setBackground(Color.WHITE);
-        JOptionPane jop = new JOptionPane();
-        JDialog dialog = jop.createDialog("My Dialog");
-        dialog.setSize(1800, 900);
-        dialog.setLocation(0,0);
-        dialog.setContentPane(CustomerWorkAreaJPanel);
-        dialog.setVisible(true);        
-    }//GEN-LAST:event_btnLoginGuestActionPerformed
-
     private void txtMailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMailIdActionPerformed
@@ -206,7 +180,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnLoginGuest;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
