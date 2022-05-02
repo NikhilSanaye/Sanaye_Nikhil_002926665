@@ -15,7 +15,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +37,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     ProductCatalog pcatalog= new ProductCatalog();
     ProductCatalog cart;
     List<OrderItems> orderItemsList;
-    List<Supplier> supplierList;
+    List<User> supplierList;
     
     JPanel customerUserProcessContainer;
 
@@ -44,6 +46,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         this.customerUserProcessContainer=customerUserProcessContainer;
         this.cart=cart;
         this.orderItemsList=orderItemsList;
+        supplierList=new ArrayList<>();
         refreshTable();
         prodQuantity.setValue(1);
         loadSupplierDropDown();
@@ -70,21 +73,26 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
      private void loadSupplierDropDown(){
          getSupplierList();
          
-         
-         
-         
+       
+        String[] s= new String[supplierList.size()];
+        
+        for(int i=0; i< supplierList.size() ; i++){
+            s[i]= supplierList.get(i).getUserId();
+        }
+        
+        cmbSupplier.setModel(new javax.swing.DefaultComboBoxModel<>(s));                  
      }
      
      private void getSupplierList(){
            try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from productssuppliers";     
+        String query = "Select * from users where role='supplier'";     
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         while(rs.next()) {
-            Supplier s=new Supplier();
-            s.setUserId(rs.getString("suppliername"));
-            supplierList.add(s);
+            User u=new User();
+            u.setUserId(rs.getString("userId"));
+            supplierList.add(u);
         } 
         connection.close();
         } catch (Exception exception) {
