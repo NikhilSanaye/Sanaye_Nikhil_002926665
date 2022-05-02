@@ -34,53 +34,56 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
   
     public void refreshTable(){
-        populateSuppliersFromDB();
-        int rowCount = supplierTable.getRowCount();
-        DefaultTableModel model = (DefaultTableModel) supplierTable.getModel();
+        populateDiscountFromDB();
+        int rowCount = tbldiscount.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) tbldiscount.getModel();
         for(int i=rowCount-1;i>=0;i--){
             model.removeRow(i);
         }
-        /*
-        for (User s : discountList) {
-            Object row[] = new Object[1];
+        
+        for (Discount s : discountList) {
+            Object row[] = new Object[4];
             row[0] = s;
+            row[1] = s.getDiscountAmount();
+            row[2] = s.getDiscountPercent();
+            row[3] = s.getExpiry();
             model.addRow(row);
-        }*/
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        supplierTable = new javax.swing.JTable();
+        tbldiscount = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        supplierTable.setModel(new javax.swing.table.DefaultTableModel(
+        tbldiscount.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Supplier Name", "Number of Products"
+                "Code", "Flat amount", "Percent amount", "Expiry"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(supplierTable);
-        if (supplierTable.getColumnModel().getColumnCount() > 0) {
-            supplierTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-            supplierTable.getColumnModel().getColumn(1).setMaxWidth(200);
+        jScrollPane1.setViewportView(tbldiscount);
+        if (tbldiscount.getColumnModel().getColumnCount() > 0) {
+            tbldiscount.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tbldiscount.getColumnModel().getColumn(1).setMaxWidth(200);
         }
 
         btnBack.setText("<< Back");
@@ -106,7 +109,7 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Manage Suppliers");
+        lblTitle.setText("Manage Promotions");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,12 +152,12 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
 
-        int row = supplierTable.getSelectedRow();
+        int row = tbldiscount.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
+        Supplier s = (Supplier)tbldiscount.getValueAt(row,0);
         ViewSupplierCatalogJPanel vs = new ViewSupplierCatalogJPanel(userProcessContainer, s);
         userProcessContainer.add("ViewSupplier", vs);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -164,12 +167,12 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
 
-        int row = supplierTable.getSelectedRow();
+        int row = tbldiscount.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        User s = (User) supplierTable.getValueAt(row, 0);
+        User s = (User) tbldiscount.getValueAt(row, 0);
         //supplierDirectory.removeSupplier(s);
         refreshTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
@@ -183,12 +186,12 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        int row = supplierTable.getSelectedRow();
+        int row = tbldiscount.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
+        Supplier s = (Supplier)tbldiscount.getValueAt(row,0);
         ViewSupplier vs = new ViewSupplier(userProcessContainer, s);
         userProcessContainer.add("ViewSupplier", vs);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -202,25 +205,21 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable supplierTable;
+    private javax.swing.JTable tbldiscount;
     // End of variables declaration//GEN-END:variables
 
-    private void populateSuppliersFromDB() {
+    private void populateDiscountFromDB() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where role='supplier'";     
+        String query = "Select * from discount";     
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         while(rs.next()) {
-            String userId = rs.getString("userId");
-            String password = rs.getString("password");
-            String role = rs.getString("role");
-            String mailId = rs.getString("mailId");
-            String address = rs.getString("address");
-            String contactNumber = rs.getString("contactNumber");
-            String SSN = rs.getString("SSN");
-            String registrationState = rs.getString("registrationState");
-            createSupplierObject(userId, password, role, mailId, address, contactNumber, SSN, registrationState);
+            String code = rs.getString("code");
+            String discountamount = rs.getString("discountamount");
+            String expiry = rs.getString("expiry");
+            String discountpercent = rs.getString("discountpercent");
+            createDiscountObject(code, discountamount, expiry, discountpercent);
         } 
         connection.close();
         } catch (Exception exception) {
@@ -228,17 +227,14 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void createSupplierObject(String userId, String password, String role, String mailId, String address, String contactNumber, String SSN, String registrationState) {
-        Supplier newSupplier = new Supplier();
-        newSupplier.setUserId(userId);
-        newSupplier.setPassword(password);
-        newSupplier.setRole(role);
-        newSupplier.setMailId(mailId);
-        newSupplier.setAddress(address);
-        newSupplier.setContactNumber(contactNumber);
-        newSupplier.setSSN(SSN);
-        newSupplier.setRegistrationState(registrationState);
-       // supplierDirectory.getSupplierlist().add(newSupplier);
+    private void createDiscountObject(String code, String discountamount, String expiry, String discountpercent) {
+        discount = new Discount();
+        discount.setCode(code);
+        discount.setDiscountAmount(discountamount);
+        discount.setExpiry(expiry);
+        discount.setDiscountPercent(discountpercent);
+        
+        discountList.add(discount);
     }
 
 }
