@@ -48,23 +48,22 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
         supplierTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnView1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Supplier Name", "Number of Products"
+                "Supplier Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -72,10 +71,6 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(supplierTable);
-        if (supplierTable.getColumnModel().getColumnCount() > 0) {
-            supplierTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-            supplierTable.getColumnModel().getColumn(1).setMaxWidth(200);
-        }
 
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -91,21 +86,14 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnView.setText("View Products");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Manage Suppliers");
 
-        btnView1.setText("View Details");
-        btnView1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("View Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnView1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -117,9 +105,8 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnView1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnView)
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRemove))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,9 +116,6 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
                         .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRemove, btnView});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -141,29 +125,13 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView)
                     .addComponent(btnRemove)
-                    .addComponent(btnView1))
-                .addContainerGap(315, Short.MAX_VALUE))
+                    .addComponent(jButton1))
+                .addGap(149, 149, 149))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-
-        int row = supplierTable.getSelectedRow();
-        if(row<0){
-            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
-        ViewSupplierCatalogJPanel vs = new ViewSupplierCatalogJPanel(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
 
@@ -198,12 +166,25 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnView1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:ViewSupplierDetailJPanel
+        int row = supplierTable.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        User u = (User)supplierTable.getValueAt(row,0);
+        ViewSupplierDetailJPanel vsdjp = new ViewSupplierDetailJPanel(userProcessContainer, u);
+        userProcessContainer.add("ViewSupplierDetailJPanel", vsdjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnView;
-    private javax.swing.JButton btnView1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable supplierTable;

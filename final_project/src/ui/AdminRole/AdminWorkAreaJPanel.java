@@ -30,7 +30,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageSuppliers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnManageSuppliers1 = new javax.swing.JButton();
-        btnManageSuppliers2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -52,13 +51,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageSuppliers2.setText("Check suppliers payment >>");
-        btnManageSuppliers2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageSuppliers2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,14 +64,12 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btnManageSuppliers2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(65, 65, 65))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(22, 22, 22)))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnManageSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(65, 65, 65))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnManageSuppliers1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,9 +80,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageSuppliers)
                 .addGap(28, 28, 28)
                 .addComponent(btnManageSuppliers1)
-                .addGap(26, 26, 26)
-                .addComponent(btnManageSuppliers2)
-                .addContainerGap())
+                .addGap(414, 414, 414))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,16 +97,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
-
-    private void btnManageSuppliers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnManageSuppliers2ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageSuppliers;
     private javax.swing.JButton btnManageSuppliers1;
-    private javax.swing.JButton btnManageSuppliers2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     
