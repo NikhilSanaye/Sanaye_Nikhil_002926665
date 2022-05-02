@@ -66,7 +66,6 @@ public class ComplaintRefundReturnJPanel extends javax.swing.JPanel {
         btnProductComplaint = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnProvideFeedback = new javax.swing.JButton();
-        btnlogisticComplaint = new javax.swing.JButton();
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,13 +110,6 @@ public class ComplaintRefundReturnJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnlogisticComplaint.setText("logistic complaints");
-        btnlogisticComplaint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnlogisticComplaintActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,8 +125,7 @@ public class ComplaintRefundReturnJPanel extends javax.swing.JPanel {
                         .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnProvideFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnProductComplaint, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnlogisticComplaint, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnProductComplaint, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -148,9 +139,7 @@ public class ComplaintRefundReturnJPanel extends javax.swing.JPanel {
                 .addComponent(btnProductComplaint)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnProvideFeedback)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnlogisticComplaint)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,15 +171,10 @@ public class ComplaintRefundReturnJPanel extends javax.swing.JPanel {
         layout.next(customerUserProcessContainer);
     }//GEN-LAST:event_btnProvideFeedbackActionPerformed
 
-    private void btnlogisticComplaintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogisticComplaintActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnlogisticComplaintActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProductComplaint;
     private javax.swing.JButton btnProvideFeedback;
-    private javax.swing.JButton btnlogisticComplaint;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable supplierTable;
