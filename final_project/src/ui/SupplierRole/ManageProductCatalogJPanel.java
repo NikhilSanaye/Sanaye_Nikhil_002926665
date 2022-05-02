@@ -28,7 +28,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
     Product p;
     //List<Product> productList= new ArrayList<Product>();
     ProductCatalog pcatalog= new ProductCatalog();
-    ArrayList<String> productReviews= new ArrayList<String>();
+    ArrayList<String> productReviews;
 
     public ManageProductCatalogJPanel(JPanel upc, String s) {
         initComponents();
@@ -40,7 +40,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
     public void refreshTable() {
         
-        
+        productReviews= new ArrayList<String>();
         populateProductsFromDb();
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
         model.setRowCount(0);
@@ -173,6 +173,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         }
         Product s = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
         //supplier.getProductCatalog().removeProduct(s);
+        pcatalog.getProductcatalog().remove(s);
         refreshTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -246,6 +247,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         p.setDiscount(discount);
         productReviews.add(reviews);
         p.setProductReviews(productReviews);
-        pcatalog.getProductcatalog().add(p);
+        if(!pcatalog.getProductcatalog().contains(p)){
+        pcatalog.getProductcatalog().add(p);}
     }
 }
