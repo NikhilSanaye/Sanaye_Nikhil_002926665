@@ -12,6 +12,7 @@ import ui.AdminRole.AdminWorkAreaJPanel;
 import ui.CustomerRole.CustomerLoginJPanel;
 import ui.SalesManager.SalesManagerLoginJPanel;
 import ui.SupplierRole.SupplierLoginJPanel;
+import ui.SupportCenter.SupportLoginJPanel;
 import ui.logistics.LogisticsLoginJPanel;
 
 /**
@@ -47,6 +48,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnSupplier1 = new javax.swing.JButton();
         btnSupplier2 = new javax.swing.JButton();
         btnSupplier3 = new javax.swing.JButton();
+        btnCustomerSupport = new javax.swing.JButton();
         userProcessContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,6 +92,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCustomerSupport.setText("Customer Support");
+        btnCustomerSupport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerSupportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -106,7 +115,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(controlPanelLayout.createSequentialGroup()
                         .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSupplier1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSupplier1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCustomerSupport, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -126,7 +136,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnSupplier1)
                 .addGap(12, 12, 12)
                 .addComponent(btnSupplier3)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCustomerSupport)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -194,6 +206,14 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnSupplier3ActionPerformed
 
+    private void btnCustomerSupportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerSupportActionPerformed
+        // TODO add your handling code here:
+        SupportLoginJPanel sljp = new SupportLoginJPanel(userProcessContainer);
+        userProcessContainer.add("SupportLoginJPanel", sljp);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCustomerSupportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +251,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdmin;
+    private javax.swing.JButton btnCustomerSupport;
     private javax.swing.JButton btnSupplier;
     private javax.swing.JButton btnSupplier1;
     private javax.swing.JButton btnSupplier2;
