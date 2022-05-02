@@ -6,7 +6,11 @@ package ui.logistics;
 
 import ui.CustomerRole.*;
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Consignment;
 import model.OrderItems;
@@ -166,7 +170,27 @@ public class ViewConsignmentDetailJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+
         // TODO add your handling code here:
+                try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+
+        String query = "update orders set deliveryState=? where orderId=?";
+        PreparedStatement preparedStmt = connection.prepareStatement(query);
+
+        //query = " update orders set deliveryState=? where orderId=?";
+        preparedStmt = connection.prepareStatement(query);
+        preparedStmt.setString(1, txtDeliveryState.getText());
+        preparedStmt.setString(2, txtConsignmentId.getText());
+        preparedStmt.execute();
+     
+        connection.close();
+        JOptionPane.showMessageDialog(null, "Updated", "Info", JOptionPane.INFORMATION_MESSAGE);
+        clearboxes();
+        }               
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -184,4 +208,8 @@ public class ViewConsignmentDetailJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDeliveryState;
     private javax.swing.JTextField txtMailId;
     // End of variables declaration//GEN-END:variables
+
+    private void clearboxes() {
+
+    }
 }
