@@ -22,35 +22,41 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="193" max="32767" attributes="0"/>
+              <EmptySpace pref="172" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblProductId" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblProductName" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblProductPrice" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtOrderId" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                          <Component id="txtProductName" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                          <Component id="txtProductFeedback" min="-2" pref="296" max="-2" attributes="0"/>
-                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblProductPrice1" min="-2" pref="113" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbResolutionType" min="-2" pref="151" max="-2" attributes="0"/>
+                  <Component id="txtOrderId" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="txtProductName" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="btnBack1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="535" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,11 +64,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblTitle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblProductName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtOrderId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -72,17 +75,26 @@
                   <Component id="lblProductId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtProductName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblProductPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtProductFeedback" alignment="3" min="-2" pref="225" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="135" max="-2" attributes="0"/>
+                  <Component id="lblProductPrice" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbResolutionType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProductPrice1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="147" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="btnBack1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="539" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -114,17 +126,12 @@
         <Property name="text" type="java.lang.String" value="Complaint:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtProductFeedback">
+    <Component class="javax.swing.JButton" name="btnSubmit">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnBack">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
+        <Property name="text" type="java.lang.String" value="Submit"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtProductName">
@@ -140,18 +147,43 @@
         <Property name="text" type="java.lang.String" value="Product name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jFeedback">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JComboBox" name="cmbResolutionType">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Refund"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbResolutionTypeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JLabel" name="lblProductPrice1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Replace"/>
+        <Property name="text" type="java.lang.String" value="What do u Expect:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBack1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;&lt; Back"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBack1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

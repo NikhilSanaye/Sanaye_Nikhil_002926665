@@ -4,6 +4,10 @@ import ui.SupplierRole.*;
 import java.awt.CardLayout;
 import ui.AdminRole.ManageSuppliersJPanel;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Consignment;
 import model.Product;
@@ -20,11 +24,19 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
         initComponents();
         userProcessContainer = upc;
         this.c = c;
+        loadDropDown();
         txtOrderId.setText(String.valueOf(c.getOrderId()));
         txtProductName.setText(c.getProductName());
-        //txtProductFeedback.setText(String.valueOf(p.getPrice()));
     }
 
+    private void loadDropDown(){
+         
+        String[] s= new String[2];
+        s[0]= "Refund";s[1]= "Replace";
+        
+        cmbResolutionType.setModel(new javax.swing.DefaultComboBoxModel<>(s));      
+        
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -32,12 +44,14 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
         lblProductName = new javax.swing.JLabel();
         txtOrderId = new javax.swing.JTextField();
         lblProductPrice = new javax.swing.JLabel();
-        txtProductFeedback = new javax.swing.JTextField();
-        btnBack = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         txtProductName = new javax.swing.JTextField();
         lblProductId = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jFeedback = new javax.swing.JTextArea();
+        cmbResolutionType = new javax.swing.JComboBox();
+        lblProductPrice1 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -55,12 +69,10 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
 
         lblProductPrice.setText("Complaint:");
 
-        txtProductFeedback.setEditable(false);
-
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -73,52 +85,64 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
 
         lblProductId.setText("Product name:");
 
-        jButton1.setText("Refund");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jFeedback.setColumns(20);
+        jFeedback.setRows(5);
+        jScrollPane1.setViewportView(jFeedback);
+
+        cmbResolutionType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cmbResolutionTypeActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Replace");
+        lblProductPrice1.setText("What do u Expect:");
+
+        btnBack1.setText("<< Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnBack)
-                .addGap(172, 172, 172)
+                .addGap(277, 277, 277)
                 .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
+                .addContainerGap(172, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblProductId, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblProductName, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblProductPrice, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProductFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(59, 59, 59))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblProductPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSubmit)
+                    .addComponent(cmbResolutionType, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(189, 189, 189))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(34, 34, 34)
+                    .addComponent(btnBack1)
+                    .addContainerGap(535, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(btnBack))
-                .addGap(78, 78, 78)
+                .addComponent(lblTitle)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProductName)
                     .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,26 +150,47 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProductId)
                     .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductPrice))
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductPrice)
-                    .addComponent(txtProductFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(89, 89, 89))
+                    .addComponent(cmbResolutionType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductPrice1))
+                .addGap(33, 33, 33)
+                .addComponent(btnSubmit)
+                .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(36, 36, 36)
+                    .addComponent(btnBack1)
+                    .addContainerGap(539, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        String complaintDesc=jFeedback.getText();
+        String resolutionType=cmbResolutionType.getSelectedItem().toString();
+        String record_Type="Record_Type";
+        try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+                String regState="pending";
+                String role="supplier";
+                String query = "INSERT INTO customer_support(`orderId`, `ComplaintDescription`,`ProductName`,`ResolutionType`,`Record_Type`)"
+                + " VALUES ('"+c.getOrderId()+"','"+complaintDesc+"','"+c.getProductName()+"','"+resolutionType+"','"+record_Type+"')";
 
-        backAction();
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+                Statement st = connection.createStatement();
+                int rs = st.executeUpdate(query);
+                if(rs>0){
+                    JOptionPane.showMessageDialog(null, "Your Complaint has been recorded", "Info", JOptionPane.INFORMATION_MESSAGE);
+                }
+                connection.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }        
+     
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtOrderIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderIdActionPerformed
         // TODO add your handling code here:
@@ -154,6 +199,17 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
     private void txtProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProductNameActionPerformed
+
+    private void cmbResolutionTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbResolutionTypeActionPerformed
+        
+
+    }//GEN-LAST:event_cmbResolutionTypeActionPerformed
+
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
       private void backAction() {
         userProcessContainer.remove(this);
@@ -165,15 +221,17 @@ public class PostComplaintJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox cmbResolutionType;
+    private javax.swing.JTextArea jFeedback;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblProductId;
     private javax.swing.JLabel lblProductName;
     private javax.swing.JLabel lblProductPrice;
+    private javax.swing.JLabel lblProductPrice1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtOrderId;
-    private javax.swing.JTextField txtProductFeedback;
     private javax.swing.JTextField txtProductName;
     // End of variables declaration//GEN-END:variables
 }

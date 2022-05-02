@@ -4,6 +4,7 @@ import ui.SupplierRole.*;
 import java.awt.CardLayout;
 import ui.AdminRole.ManageSuppliersJPanel;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Consignment;
 import model.Product;
@@ -21,8 +22,15 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
         userProcessContainer = upc;
         this.c = c;
         txtOrderId.setText(String.valueOf(c.getOrderId()));
-        txtProductName.setText(c.getProductName());
-        //txtProductFeedback.setText(String.valueOf(p.getPrice()));
+        
+        String[] s= new String[5];
+        
+        for(int i=0; i< 5 ; i++){
+            s[i]= String.valueOf(i+1);
+        }
+        
+        comboRating.setModel(new javax.swing.DefaultComboBoxModel<>(s));
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -32,13 +40,12 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
         lblProductName = new javax.swing.JLabel();
         txtOrderId = new javax.swing.JTextField();
         lblProductPrice = new javax.swing.JLabel();
-        txtProductFeedback = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-        txtProductName = new javax.swing.JTextField();
-        lblProductId = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         lblProductId1 = new javax.swing.JLabel();
         comboRating = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jFeedback = new javax.swing.JTextArea();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -56,23 +63,12 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
 
         lblProductPrice.setText("Feedback:");
 
-        txtProductFeedback.setEditable(false);
-
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-
-        txtProductName.setEditable(false);
-        txtProductName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProductNameActionPerformed(evt);
-            }
-        });
-
-        lblProductId.setText("Product name:");
 
         jButton2.setText("Post");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -84,25 +80,20 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
         lblProductId1.setText("Rating:");
 
         comboRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5"}));
+        comboRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboRatingActionPerformed(evt);
+            }
+        });
+
+        jFeedback.setColumns(20);
+        jFeedback.setRows(5);
+        jScrollPane1.setViewportView(jFeedback);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProductId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblProductName, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblProductPrice, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblProductId1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtProductFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -114,6 +105,22 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
                         .addGap(262, 262, 262)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(193, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProductPrice)
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblProductName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblProductId1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(189, 189, 189))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,21 +133,19 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProductName)
                     .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductId)
-                    .addComponent(txtProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductPrice)
-                    .addComponent(txtProductFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductId1)
-                    .addComponent(comboRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jButton2)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProductPrice)
+                        .addGap(94, 94, 94)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblProductId1)
+                            .addComponent(comboRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,13 +158,14 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOrderIdActionPerformed
 
-    private void txtProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProductNameActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+             JOptionPane.showMessageDialog(this, "Thanks for your valuable feedback!Your Response has been recorded");
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void comboRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRatingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboRatingActionPerformed
 
       private void backAction() {
         userProcessContainer.remove(this);
@@ -174,13 +180,12 @@ public class ProvideFeedbackJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JComboBox<String> comboRating;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel lblProductId;
+    private javax.swing.JTextArea jFeedback;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblProductId1;
     private javax.swing.JLabel lblProductName;
     private javax.swing.JLabel lblProductPrice;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtOrderId;
-    private javax.swing.JTextField txtProductFeedback;
-    private javax.swing.JTextField txtProductName;
     // End of variables declaration//GEN-END:variables
 }
