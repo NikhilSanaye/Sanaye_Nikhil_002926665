@@ -23,12 +23,14 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
     public ManageSuppliersJPanel(JPanel upc) {
         initComponents();
         userProcessContainer = upc;
+        supplierDirectory=new SupplierDirectory();
+
+        populateSuppliersFromDB();
         refreshTable();
     }
   
     public void refreshTable(){
-        supplierDirectory=new SupplierDirectory();
-        populateSuppliersFromDB();
+        
         int rowCount = supplierTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel) supplierTable.getModel();
         for(int i=rowCount-1;i>=0;i--){
@@ -141,6 +143,9 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
         }
         User s = (User) supplierTable.getValueAt(row, 0);
         supplierDirectory.removeSupplier(s);
+        JOptionPane.showMessageDialog(null, "Supplier removed from the directory", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        
         refreshTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
