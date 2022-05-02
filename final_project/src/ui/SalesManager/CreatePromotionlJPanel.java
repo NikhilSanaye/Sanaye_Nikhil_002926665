@@ -178,9 +178,10 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
         int rs = st.executeUpdate(query);
         if(rs>0){
             JOptionPane.showMessageDialog(null, "Promotion created", "Info", JOptionPane.INFORMATION_MESSAGE);
-            sendUserMessage();
+            
         }               
         connection.close();
+        sendUserMessage();
         } catch (Exception exception) {
             exception.printStackTrace();
         }      
@@ -210,10 +211,13 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
     private void sendUserMessage() {
         populateCustomersFromDB();
         String existingMessage;
-        StringBuilder newMessage = new StringBuilder();
+        StringBuilder newMessage;
         String promoCode=txtPromotionCode.getText();
         String promoDescription=txtDescription.getText();
+        //JOptionPane.showMessageDialog(null, "customer size:"+customerList.size(), "Info", JOptionPane.INFORMATION_MESSAGE);
         for(int i=0; i<customerList.size();i++){
+            newMessage = new StringBuilder();
+            //JOptionPane.showMessageDialog(null, customerList.get(i).getMailId(), "Info", JOptionPane.INFORMATION_MESSAGE);
             existingMessage=customerList.get(i).getMessages();
             newMessage.append(existingMessage);
             newMessage.append("-");
@@ -221,6 +225,7 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
             newMessage.append(":");
             newMessage.append(txtDescription.getText());
             updateCustomerMessage(customerList.get(i).getMailId(), newMessage.toString());
+            existingMessage="";
         }
     
        // customer.getMessages()
@@ -267,19 +272,19 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
     private void updateCustomerMessage(String mailId, String newMessage) {
         
         try {
-	connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
 
         String query = " update users set messages=? where userId=?";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
 
-        //query = " update users set registrationState=? where userId=?";
+        query = " update users set messages=? where userId=?";
         preparedStmt = connection.prepareStatement(query);
         preparedStmt.setString(1, newMessage);
         preparedStmt.setString(2, mailId);
         preparedStmt.execute();
      
         connection.close();
-        JOptionPane.showMessageDialog(null, "Message updated", "Info", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Message updated"+ newMessage+"    " +mailId, "Info", JOptionPane.INFORMATION_MESSAGE);
         }               
         catch (Exception exception) {
             exception.printStackTrace();
