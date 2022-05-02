@@ -22,7 +22,7 @@ import model.Supplier;
  */
 public class MyOrdersJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
+    private JPanel customerUserProcessContainer;
     private SupplierDirectory supplierDirectory;
     private User loggedInUser;
     private Order order;
@@ -31,25 +31,29 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
     public MyOrdersJPanel(JPanel upc, User loggedInUser) {
         this.orderList = new ArrayList<Order>();
         initComponents();
-        userProcessContainer = upc;
+        customerUserProcessContainer = upc;
         this.loggedInUser=loggedInUser;
         refreshTable();
     }
+    
+ 
 
   
     public void refreshTable(){
         
         populateOrdersFromDB();
         
-        int rowCount = supplierTable.getRowCount();
-        DefaultTableModel model = (DefaultTableModel) supplierTable.getModel();
+        int rowCount = orderTable.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         for(int i=rowCount-1;i>=0;i--){
             model.removeRow(i);
         }
         for (Order o : orderList) {
-            Object row[] = new Object[2];
-            row[0] = o.getOrderId();
-            row[1] = o.getDeliveryState();
+            Object row[] = new Object[4];
+            row[0] = o;
+            row[1] = o.getAddress();
+            row[2] = o.getDeliveryState();
+            row[3] = o.getOrderDate();
             model.addRow(row);
         }
     }
@@ -57,48 +61,41 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        supplierTable = new javax.swing.JTable();
-        btnRemove = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
+        orderTableJPanel = new javax.swing.JScrollPane();
+        orderTable = new javax.swing.JTable();
+        btnUpdateOrder = new javax.swing.JButton();
+        btnViewOrder = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
-        supplierTable.setModel(new javax.swing.table.DefaultTableModel(
+        orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Order Id", "Delivery Status"
+                "Order Id", "Address", "Order Status", "Order Date"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(supplierTable);
-        if (supplierTable.getColumnModel().getColumnCount() > 0) {
-            supplierTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-            supplierTable.getColumnModel().getColumn(1).setMaxWidth(200);
+        ));
+        orderTableJPanel.setViewportView(orderTable);
+        if (orderTable.getColumnModel().getColumnCount() > 0) {
+            orderTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+            orderTable.getColumnModel().getColumn(1).setMaxWidth(200);
         }
 
-        btnRemove.setText("Delete");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateOrder.setText("Update Order ");
+        btnUpdateOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
+                btnUpdateOrderActionPerformed(evt);
             }
         });
 
-        btnView.setText("View Products");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
+        btnViewOrder.setText("View Order Details");
+        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
+                btnViewOrderActionPerformed(evt);
             }
         });
 
@@ -106,89 +103,103 @@ public class MyOrdersJPanel extends javax.swing.JPanel {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("My Orders");
 
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(btnView)
+                        .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnRemove))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdateOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(orderTableJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addComponent(btnBack)
+                        .addGap(119, 119, 119)
                         .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRemove, btnView});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblTitle)
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView)
-                    .addComponent(btnRemove))
+                    .addComponent(lblTitle)
+                    .addComponent(btnBack))
+                .addGap(30, 30, 30)
+                .addComponent(orderTableJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnViewOrder)
+                    .addComponent(btnUpdateOrder))
                 .addContainerGap(321, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
 
-        int row = supplierTable.getSelectedRow();
+        int row = orderTable.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
-        ViewSupplierCatalogJPanel vs = new ViewSupplierCatalogJPanel(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        Order o = (Order)orderTable.getValueAt(row,0);
+        viewOrderDetails vodjp = new viewOrderDetails(customerUserProcessContainer,o);
+        customerUserProcessContainer.add("viewOrderDetails", vodjp);
+        CardLayout layout = (CardLayout) customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
         
-    }//GEN-LAST:event_btnViewActionPerformed
+    }//GEN-LAST:event_btnViewOrderActionPerformed
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+    private void btnUpdateOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateOrderActionPerformed
 
-        int row = supplierTable.getSelectedRow();
+        int row = orderTable.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        User s = (User) supplierTable.getValueAt(row, 0);
-        supplierDirectory.removeSupplier(s);
+            Order o = (Order) orderTable.getValueAt(row, 0);
+        //supplierDirectory.removeSupplier();
         refreshTable();
-    }//GEN-LAST:event_btnRemoveActionPerformed
+    }//GEN-LAST:event_btnUpdateOrderActionPerformed
 
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        int row = supplierTable.getSelectedRow();
+        int row = orderTable.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Supplier s = (Supplier)supplierTable.getValueAt(row,0);
-        ViewSupplier vs = new ViewSupplier(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        Supplier s = (Supplier)orderTable.getValueAt(row,0);
+        ViewSupplier vs = new ViewSupplier(customerUserProcessContainer, s);
+        customerUserProcessContainer.add("ViewSupplier", vs);
+        CardLayout layout = (CardLayout) customerUserProcessContainer.getLayout();
+        layout.next(customerUserProcessContainer);
     }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        customerUserProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) customerUserProcessContainer.getLayout();
+        layout.previous(customerUserProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnView;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnUpdateOrder;
+    private javax.swing.JButton btnViewOrder;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable supplierTable;
+    private javax.swing.JTable orderTable;
+    private javax.swing.JScrollPane orderTableJPanel;
     // End of variables declaration//GEN-END:variables
 
 

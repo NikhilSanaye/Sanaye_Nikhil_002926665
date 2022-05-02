@@ -193,8 +193,10 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         }
         OrderItems orderItem = (OrderItems) tblCart.getValueAt(row, 0);
         orderItem.setQuantity(Integer.parseInt(txtNewQuantity.getText()));
+        
        
-        JOptionPane.showMessageDialog(this, "Item quantity updates");
+        JOptionPane.showMessageDialog(this, "Item quantity updatesd");
+        refreshTable();
         
     }//GEN-LAST:event_btnModifyQuantityActionPerformed
 
