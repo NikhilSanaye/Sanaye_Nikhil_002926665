@@ -6,6 +6,7 @@
 package ui.AdminRole;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Supplier;
 import model.User;
+import ui.SupplierRole.ManageProductCatalogJPanel;
 
 /**
  *
@@ -193,9 +195,6 @@ public class ViewPendingSupplierRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-           
-        
-
     }//GEN-LAST:event_backButton1ActionPerformed
 
     private void btnApproveSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveSupplierActionPerformed

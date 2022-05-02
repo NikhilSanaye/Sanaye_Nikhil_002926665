@@ -95,8 +95,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed
-        ViewPendingSupplierRequestJPanel sraj = new ViewPendingSupplierRequestJPanel(userProcessContainer,loggedInUser);
-        userProcessContainer.add("ViewPendingSupplierRequestJPanel", sraj);
+        SupplierRequestTable srt = new SupplierRequestTable(userProcessContainer,loggedInUser);
+        userProcessContainer.add("SupplierRequestTable", srt);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliers1ActionPerformed
