@@ -3,6 +3,7 @@ package ui.AdminRole;
 import model.SupplierDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import model.User;
 
 /**
  *
@@ -12,11 +13,13 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
   
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
-    public AdminWorkAreaJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
+     public User loggedInUser;
+    public AdminWorkAreaJPanel(JPanel userProcessContainer,User user) {
         
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.supplierDirectory=supplierDirectory;
+        this.loggedInUser=user;
     }
     
     /** This method is called from within the constructor to
@@ -92,8 +95,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnManageSuppliers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliers1ActionPerformed
-        SupplierRequestActionJPanel sraj = new SupplierRequestActionJPanel(userProcessContainer);
-        userProcessContainer.add("SupplierRequestActionJPanel", sraj);
+        ViewPendingSupplierRequestJPanel sraj = new ViewPendingSupplierRequestJPanel(userProcessContainer,loggedInUser);
+        userProcessContainer.add("ViewPendingSupplierRequestJPanel", sraj);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageSuppliers1ActionPerformed

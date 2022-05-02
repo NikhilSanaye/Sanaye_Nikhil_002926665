@@ -12,13 +12,14 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.sql.Statement;
+import model.User;
 
 /**
  *
  * @author  Mihir Mehta / Hechen Gao
  */
 public class AdminLoginJPanel extends javax.swing.JPanel {
-  
+    public User loggedInUser;
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
     public String password;
@@ -114,7 +115,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
 
         // TODO add your handling code here:
         if(validateUser()){
-        AdminWorkAreaJPanel awajp = new AdminWorkAreaJPanel(userProcessContainer, supplierDirectory);
+        AdminWorkAreaJPanel awajp = new AdminWorkAreaJPanel(userProcessContainer, loggedInUser);
         userProcessContainer.add("AdminWorkAreaJPanel",awajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -138,7 +139,21 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
         String query = "Select * from users where userId='"+txtUserid.getText()+"' and password='"+password+"' and role='administrator'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
-        if (rs.next()) {
+            
+           while(rs.next()) {
+            String userId = rs.getString("userId");
+            String mailId = rs.getString("mailId");
+            String address = rs.getString("address");
+            String contactNumber = rs.getString("contactNumber");
+            String SSN = rs.getString("SSN");
+            String registrationState = rs.getString("registrationState");
+            String city = rs.getString("city");
+            String state = rs.getString("state");
+            createUserObject(userId, mailId, address, contactNumber, SSN, registrationState, city, state);
+        }
+            
+        if (loggedInUser!=null) {
+            
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Wrong Credentials", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -149,5 +164,17 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
         }
         return false;
         }
+    
+        private void createUserObject(String userId, String mailId, String address, String contactNumber, String SSN, String registrationState, String city, String state) {
+        loggedInUser= new User();
+        loggedInUser.setUserId(userId);
+        loggedInUser.setMailId(mailId);
+        loggedInUser.setAddress(address);
+        loggedInUser.setContactNumber(contactNumber);
+        loggedInUser.setSSN(SSN);
+        loggedInUser.setRegistrationState(registrationState);
+        loggedInUser.setCity(city);
+        loggedInUser.setState(state);
+    }
     
 }
