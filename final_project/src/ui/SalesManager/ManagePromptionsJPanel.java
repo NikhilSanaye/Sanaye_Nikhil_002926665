@@ -152,14 +152,8 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
 
-        int row = tbldiscount.getSelectedRow();
-        if(row<0){
-            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Supplier s = (Supplier)tbldiscount.getValueAt(row,0);
-        ViewSupplierCatalogJPanel vs = new ViewSupplierCatalogJPanel(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
+        CreatePromotionlJPanel cpjp = new CreatePromotionlJPanel(userProcessContainer);
+        userProcessContainer.add("CreatePromotionlJPanel", cpjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         

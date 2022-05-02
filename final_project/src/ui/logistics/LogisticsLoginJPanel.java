@@ -116,7 +116,7 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(validateLogisticUser()){
-        LogisticsWorkAreaJPanel lwajp = new LogisticsWorkAreaJPanel(userProcessContainer);
+        LogisticsSupportJPanel lwajp = new LogisticsSupportJPanel(userProcessContainer);
         userProcessContainer.add("LogisticsWorkAreaJPanel",lwajp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);  
