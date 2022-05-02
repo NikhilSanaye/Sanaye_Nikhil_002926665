@@ -277,7 +277,7 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
         String query = " update users set messages=? where userId=?";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
 
-        query = " update users set messages=? where userId=?";
+        query = " update users set messages=? where mailId=?";
         preparedStmt = connection.prepareStatement(query);
         preparedStmt.setString(1, newMessage);
         preparedStmt.setString(2, mailId);
