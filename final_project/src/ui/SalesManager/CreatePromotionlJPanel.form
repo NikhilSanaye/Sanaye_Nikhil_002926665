@@ -23,33 +23,41 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblProductName" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPrice" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTotal" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblProductId" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblQuantity" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblProductName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPrice" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTotal" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblProductId" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblQuantity" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtPromotionCode" linkSize="1" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="txtPercentageDiscount" linkSize="1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Component id="txtDescription" linkSize="1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Component id="txtFlatDiscount" linkSize="1" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="txtExpiry" linkSize="1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
+                      <Component id="btnCreatePromotion" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtProductName" linkSize="1" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                      <Component id="txtSalesPrice" linkSize="1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                      <Component id="txtTotal" linkSize="1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                      <Component id="txtProductId" linkSize="1" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
-                      <Component id="txtQuantity" linkSize="1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="223" max="32767" attributes="0"/>
+              <EmptySpace pref="194" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,30 +71,32 @@
               </Group>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtProductName" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPromotionCode" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProductName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtProductId" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFlatDiscount" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblProductId" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtSalesPrice" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPercentageDiscount" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtQuantity" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtExpiry" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtTotal" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDescription" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTotal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="299" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="btnCreatePromotion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="238" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,53 +120,61 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblProductName">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Product Name:"/>
+        <Property name="text" type="java.lang.String" value="Promotion code"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtProductName">
+    <Component class="javax.swing.JTextField" name="txtPromotionCode">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblProductId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Product ID:"/>
+        <Property name="text" type="java.lang.String" value="Flat Discount:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtProductId">
+    <Component class="javax.swing.JTextField" name="txtFlatDiscount">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sales Price:"/>
+        <Property name="text" type="java.lang.String" value="Percentage Discount:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSalesPrice">
+    <Component class="javax.swing.JTextField" name="txtPercentageDiscount">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblQuantity">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Quantity:"/>
+        <Property name="text" type="java.lang.String" value="Expiry:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtQuantity">
+    <Component class="javax.swing.JTextField" name="txtExpiry">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTotal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total:"/>
+        <Property name="text" type="java.lang.String" value="Description:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTotal">
+    <Component class="javax.swing.JTextField" name="txtDescription">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCreatePromotion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Promotion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreatePromotionActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
