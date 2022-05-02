@@ -63,17 +63,17 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
         tbldiscount.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Code", "Flat amount", "Percent amount", "Expiry"
+                "Code", "Flat amount", "Percent amount", "Expiry", "Description"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -100,7 +100,7 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnView.setText("View Products");
+        btnView.setText("Create Promotion");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
@@ -184,19 +184,6 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
-        int row = tbldiscount.getSelectedRow();
-        if(row<0){
-            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Supplier s = (Supplier)tbldiscount.getValueAt(row,0);
-        ViewSupplier vs = new ViewSupplier(userProcessContainer, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnView1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
