@@ -15,6 +15,7 @@ import java.sql.Statement;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import model.User;
 
 /**
@@ -26,11 +27,14 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
     private User s;
+    private JPasswordField jpass;
+    public String pwd;
     public LogisticsLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.supplierDirectory=supplierDirectory;
+        jpass=new JPasswordField(25);
     }
     
     /** This method is called from within the constructor to
@@ -44,10 +48,10 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        pwdfield = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -70,6 +74,12 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Password:");
 
+        pwdfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdfieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,12 +93,12 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(pwdfield))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -106,7 +116,7 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwdfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(231, 231, 231))
@@ -115,6 +125,7 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        pwd= new String(pwdfield.getPassword());
         if(validateLogisticUser()){
         LogisticsSupportJPanel lwajp = new LogisticsSupportJPanel(userProcessContainer);
         userProcessContainer.add("LogisticsWorkAreaJPanel",lwajp);
@@ -122,6 +133,10 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);  
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pwdfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdfieldActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -130,14 +145,14 @@ public class LogisticsLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField pwdfield;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
     private boolean validateLogisticUser() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+txtPassword.getText()+"' and role='logistics'";     
+        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+pwd+"' and role='logistics'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
         if (rs.next()) {
