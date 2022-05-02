@@ -21,6 +21,15 @@ public class User {
     private String registrationState;
     private String city;
     private String state;
+    private String messages;
+
+    public String getMessages() {
+        return messages;
+    }
+
+    public void setMessages(String messages) {
+        this.messages = messages;
+    }
 
     public String getOrganization() {
         return organization;

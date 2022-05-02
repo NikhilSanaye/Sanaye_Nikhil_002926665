@@ -225,7 +225,22 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
     }
 
     private void sendUserMessage() {
-        
+        populateCustomersFromDB();
+        String existingMessage;
+        StringBuilder newMessage = new StringBuilder();
+        String promoCode=txtPromotionCode.getText();
+        String promoDescription=txtDescription.getText();
+        for(int i=0; i<customerList.size();i++){
+            existingMessage=customerList.get(i).getMessages();
+            newMessage.append(existingMessage);
+            newMessage.append("-");
+            newMessage.append(promoCode);
+            newMessage.append(":");
+            newMessage.append(txtDescription.getText());
+            updateCustomerMessage(customerList.get(i).getMailId(), newMessage.toString());
+        }
+    
+       // customer.getMessages()
     }
     
         private void populateCustomersFromDB() {
@@ -243,7 +258,8 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
             String contactNumber = rs.getString("contactNumber");
             String SSN = rs.getString("SSN");
             String registrationState = rs.getString("registrationState");
-            createSupplierObject(userId, password, role, mailId, address, contactNumber, SSN, registrationState);
+            String messages = rs.getString("messages");
+            createCustomerObject(userId, password, role, mailId, address, contactNumber, SSN, registrationState, messages);
         } 
         connection.close();
         } catch (Exception exception) {
@@ -251,7 +267,7 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void createSupplierObject(String userId, String password, String role, String mailId, String address, String contactNumber, String SSN, String registrationState) {
+    private void createCustomerObject(String userId, String password, String role, String mailId, String address, String contactNumber, String SSN, String registrationState, String messages) {
         customer = new User();
         customer.setUserId(userId);
         customer.setPassword(password);
@@ -261,6 +277,11 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
         customer.setContactNumber(contactNumber);
         customer.setSSN(SSN);
         customer.setRegistrationState(registrationState);
+        customer.setMessages(messages);
         customerList.add(customer);
+    }
+
+    private void updateCustomerMessage(String mailId, String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
