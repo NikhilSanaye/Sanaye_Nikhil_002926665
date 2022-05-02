@@ -199,6 +199,8 @@ public class ViewProductDetailCustJPanel extends javax.swing.JPanel {
         orderItem.setUnitPrice(Double.parseDouble(p.getPrice()));
         orderItem.setProductName(p.getProdName());
         orderItemsList.add(orderItem);
+        
+        JOptionPane.showMessageDialog(this, "Item added to the cart");
 
     }//GEN-LAST:event_btnAddToCartActionPerformed
     

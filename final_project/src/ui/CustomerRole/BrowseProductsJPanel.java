@@ -48,8 +48,9 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         this.cart=cart;
         this.orderItemsList=orderItemsList;
         supplierList=new ArrayList<>();
-        refreshTable();
         prodQuantity.setValue(1);
+        
+        refreshTable(); loadSupplierDropDown();
     }
     
    
@@ -58,6 +59,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         
         populateProducts();
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
+        
         model.setRowCount(0);
            
         for (Product p : pcatalog.getProductcatalog()) {
@@ -67,8 +69,11 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
             row[2] = p.getPrice();
             row[3] = p.getDiscount();
             model.addRow(row);
+            
         }
-        loadSupplierDropDown();
+        
+        
+       
     }
     
     
@@ -251,10 +256,15 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     private void cmbSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSupplierActionPerformed
        String supplierName= cmbSupplier.getSelectedItem().toString();
 
-       populateProductsFromDb(supplierName);        
+       populateFilteredProductCatalog(supplierName);        
         
     }//GEN-LAST:event_cmbSupplierActionPerformed
 
+    private void populateFilteredProductCatalog(String supplierName){
+        
+     }
+    
+    
     private void btnProductDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductDetailsActionPerformed
         int row = tblProductCatalog.getSelectedRow();
         if(row<0){
@@ -323,6 +333,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         orderItem.setUnitPrice(Double.parseDouble(p.getPrice()));
         orderItem.setProductName(p.getProdName());
         orderItemsList.add(orderItem);
+        JOptionPane.showMessageDialog(this, "Item added to cart");
         //JOptionPane.showMessageDialog(null, "Product added to cart, size=" +cart.getProductcatalog().size(), "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnAddToCartActionPerformed
 
@@ -343,30 +354,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
 
-    private void populateProductsFromDb(String supplierName) {
-        try {
-	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        
-        String query = "Select * from products where supplier='"+supplierName+"'";     
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(query);
-        while(rs.next()) {
-            String productId = rs.getString("productId");
-            String productName = rs.getString("productName");
-            String price = rs.getString("price");
-            String description = rs.getString("description");
-            String supplier = rs.getString("supplier");
-            String category = rs.getString("category");
-            String dimension = rs.getString("dimension");
-            String discount = rs.getString("discount");
-            String reviews = rs.getString("reviews");
-            createProductObject(productId, productName, price, description, supplier, category, dimension, discount, reviews);
-        } 
-        connection.close();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-    }
+    
     
     private void populateProducts() {
         try {
