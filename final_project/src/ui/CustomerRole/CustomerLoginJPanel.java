@@ -151,11 +151,11 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         password= new String(passwordField.getPassword());
         if(validateUser()){
         CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer, loggedInUser);
-        CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
+        CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1600);
         CustomerWorkAreaJPanel.setBackground(Color.WHITE);
         JOptionPane jop = new JOptionPane();
         JDialog dialog = jop.createDialog("My Dialog");
-        dialog.setSize(1800, 900);
+        dialog.setSize(1100, 700);
         dialog.setLocation(0,0);
         dialog.setContentPane(CustomerWorkAreaJPanel);
         dialog.setVisible(true);   
