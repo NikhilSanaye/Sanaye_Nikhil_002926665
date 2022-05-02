@@ -20,8 +20,7 @@
               <EmptySpace pref="25" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="1">
-                      <Component id="btnAddSupplier" linkSize="1" min="-2" pref="106" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                       <Component id="btnView" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnRemove" linkSize="1" min="-2" max="-2" attributes="0"/>
@@ -50,7 +49,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnView" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAddSupplier" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnRemove" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="321" max="32767" attributes="0"/>
@@ -114,14 +112,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAddSupplier">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="New.."/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddSupplierActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">

@@ -40,11 +40,12 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
         for(int i=rowCount-1;i>=0;i--){
             model.removeRow(i);
         }
+        /*
         for (User s : discountList) {
             Object row[] = new Object[1];
             row[0] = s;
             model.addRow(row);
-        }
+        }*/
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,7 +56,6 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
-        btnAddSupplier = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,13 +104,6 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnAddSupplier.setText("New..");
-        btnAddSupplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddSupplierActionPerformed(evt);
-            }
-        });
-
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Manage Suppliers");
@@ -123,8 +116,7 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(131, 131, 131)
                         .addComponent(btnView)
                         .addGap(18, 18, 18)
                         .addComponent(btnRemove))
@@ -136,7 +128,7 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
                 .addGap(36, 36, 36))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddSupplier, btnRemove, btnView});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRemove, btnView});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +142,6 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnView)
-                    .addComponent(btnAddSupplier)
                     .addComponent(btnRemove))
                 .addContainerGap(321, Short.MAX_VALUE))
         );
@@ -179,7 +170,7 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
             return;
         }
         User s = (User) supplierTable.getValueAt(row, 0);
-        supplierDirectory.removeSupplier(s);
+        //supplierDirectory.removeSupplier(s);
         refreshTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
@@ -206,7 +197,6 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddSupplier;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnView;
@@ -248,7 +238,7 @@ public class ManagePromptionsJPanel extends javax.swing.JPanel {
         newSupplier.setContactNumber(contactNumber);
         newSupplier.setSSN(SSN);
         newSupplier.setRegistrationState(registrationState);
-        supplierDirectory.getSupplierlist().add(newSupplier);
+       // supplierDirectory.getSupplierlist().add(newSupplier);
     }
 
 }
