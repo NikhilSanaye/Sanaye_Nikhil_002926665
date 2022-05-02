@@ -175,7 +175,7 @@ public class SupplierLoginJPanel extends javax.swing.JPanel {
     private boolean validateSupplier() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+pass+"' and role='supplier' and registrationState='true'";     
+        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+pass+"' and role='supplier' and registrationState='approved'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
         if (rs.next()) {
