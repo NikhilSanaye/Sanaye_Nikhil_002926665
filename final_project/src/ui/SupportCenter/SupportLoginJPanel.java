@@ -122,8 +122,8 @@ public class SupportLoginJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         pass= new String(passwordField.getPassword());
         if(validateUser()){
-        SupplierWorkAreaJPanel swajp = new SupplierWorkAreaJPanel(userProcessContainer, txtUsername.getText());
-        userProcessContainer.add("SupplierWorkAreaJPanel",swajp);
+        SupportCentreWorkArea scwa = new SupportCentreWorkArea(userProcessContainer);
+        userProcessContainer.add("SupplierWorkAreaJPanel",scwa);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         }
