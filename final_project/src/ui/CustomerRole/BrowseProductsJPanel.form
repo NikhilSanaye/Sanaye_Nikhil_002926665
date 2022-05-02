@@ -37,13 +37,10 @@
                       </Group>
                       <Component id="jScrollPane1" pref="590" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblSalesPrice" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSalesPrice" linkSize="1" min="-2" pref="55" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                           <Component id="lblQuantity" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="prodQuantity" linkSize="1" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="prodQuantity" min="-2" pref="55" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnAddToCart" min="-2" pref="142" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -74,8 +71,6 @@
               <Component id="jScrollPane1" min="-2" pref="342" max="-2" attributes="0"/>
               <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSalesPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSalesPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="prodQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAddToCart" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -188,13 +183,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblSalesPrice">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sales Price:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtSalesPrice">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblQuantity">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quantity:"/>

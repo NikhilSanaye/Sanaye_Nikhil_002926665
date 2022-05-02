@@ -33,6 +33,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
     List<OrderItems> orderItems;
     private JPanel userProcessContainer;
     private String userName;
+    private double totalAmount=0;
     //private User supplier1;
     Product p;
     //List<Product> productList= new ArrayList<Product>();
@@ -54,14 +55,17 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         
         DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
         model.setRowCount(0);
+        
+        
            
         for (OrderItems o : orderItemList) {
-            Object row[] = new Object[5];
+            Object row[] = new Object[6];
             row[0] = o;
             row[1] = o.getProductName();
             row[2] = o.getUnitPrice();
             row[3] = o.getQuantity();
             row[4] = String.valueOf(o.getUnitPrice()*o.getQuantity());
+            row[5] = totalAmount+o.getUnitPrice()*o.getQuantity();
             model.addRow(row);
         }
     }
@@ -107,17 +111,17 @@ public class ManageCartJPanel extends javax.swing.JPanel {
 
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Item Name", "Price", "Quantity"
+                "ID", "Item Name", "Price", "Quantity", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -233,7 +237,7 @@ public class ManageCartJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         createOrderObject();
         createOrderItemsObject();
-        ViewPaymentPageJPanel vppjp = new ViewPaymentPageJPanel(userProcessContainer,order, orderItemList);
+        ViewPaymentPageJPanel vppjp = new ViewPaymentPageJPanel(userProcessContainer,order, orderItemList,totalAmount);
         userProcessContainer.add("ViewPaymentPageJPanel",vppjp);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

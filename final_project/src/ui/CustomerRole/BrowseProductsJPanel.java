@@ -50,12 +50,13 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         supplierList=new ArrayList<>();
         refreshTable();
         prodQuantity.setValue(1);
-        loadSupplierDropDown();
     }
     
-    
+   
     public void refreshTable() {
         
+        
+        populateProducts();
         DefaultTableModel model = (DefaultTableModel) tblProductCatalog.getModel();
         model.setRowCount(0);
            
@@ -67,6 +68,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
             row[3] = p.getDiscount();
             model.addRow(row);
         }
+        loadSupplierDropDown();
     }
     
     
@@ -118,8 +120,6 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         lblProductCatalogue = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductCatalog = new javax.swing.JTable();
-        lblSalesPrice = new javax.swing.JLabel();
-        txtSalesPrice = new javax.swing.JTextField();
         lblQuantity = new javax.swing.JLabel();
         prodQuantity = new javax.swing.JSpinner();
         btnAddToCart = new javax.swing.JButton();
@@ -175,8 +175,6 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblProductCatalog);
 
-        lblSalesPrice.setText("Sales Price:");
-
         lblQuantity.setText("Quantity:");
 
         prodQuantity.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
@@ -214,10 +212,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                             .addComponent(btnSearchProduct))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblSalesPrice)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtSalesPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(140, 140, 140)
                             .addComponent(lblQuantity)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(prodQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,9 +223,6 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {prodQuantity, txtSalesPrice});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -248,8 +240,6 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSalesPrice)
-                    .addComponent(txtSalesPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblQuantity)
                     .addComponent(prodQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddToCart)
@@ -345,12 +335,10 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblProductCatalogue;
     private javax.swing.JLabel lblQuantity;
-    private javax.swing.JLabel lblSalesPrice;
     private javax.swing.JLabel lblSupplier;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JSpinner prodQuantity;
     private javax.swing.JTable tblProductCatalog;
-    private javax.swing.JTextField txtSalesPrice;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
@@ -359,7 +347,32 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
         
-        String query = "Select * from products where supplier="+supplierName;     
+        String query = "Select * from products where supplier='"+supplierName+"'";     
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        while(rs.next()) {
+            String productId = rs.getString("productId");
+            String productName = rs.getString("productName");
+            String price = rs.getString("price");
+            String description = rs.getString("description");
+            String supplier = rs.getString("supplier");
+            String category = rs.getString("category");
+            String dimension = rs.getString("dimension");
+            String discount = rs.getString("discount");
+            String reviews = rs.getString("reviews");
+            createProductObject(productId, productName, price, description, supplier, category, dimension, discount, reviews);
+        } 
+        connection.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    
+    private void populateProducts() {
+        try {
+	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+        
+        String query = "Select * from products";     
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         while(rs.next()) {
