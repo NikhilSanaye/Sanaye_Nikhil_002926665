@@ -8,6 +8,7 @@ import ui.CustomerRole.*;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
      */
     public ArrayList<User> customerList=new ArrayList<User>();
     public User customer;
+    private Connection connection; 
     private JPanel userProcessContainer;
     public CreatePromotionlJPanel(JPanel userProcessContainer) {
         initComponents();
@@ -51,16 +53,16 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         lblProductName = new javax.swing.JLabel();
-        txtPromotionCode = new javax.swing.JTextField();
         lblProductId = new javax.swing.JLabel();
-        txtFlatDiscount = new javax.swing.JTextField();
         lblPrice = new javax.swing.JLabel();
-        txtPercentageDiscount = new javax.swing.JTextField();
         lblQuantity = new javax.swing.JLabel();
-        txtExpiry = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
-        txtDescription = new javax.swing.JTextField();
         btnCreatePromotion = new javax.swing.JButton();
+        txtPromotionCode = new javax.swing.JTextField();
+        txtFlatDiscount = new javax.swing.JTextField();
+        txtPercentageDiscount = new javax.swing.JTextField();
+        txtExpiry = new javax.swing.JTextField();
+        txtDescription = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -76,23 +78,13 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
 
         lblProductName.setText("Promotion code");
 
-        txtPromotionCode.setEditable(false);
-
         lblProductId.setText("Flat Discount:");
-
-        txtFlatDiscount.setEditable(false);
 
         lblPrice.setText("Percentage Discount:");
 
-        txtPercentageDiscount.setEditable(false);
-
         lblQuantity.setText("Expiry:");
 
-        txtExpiry.setEditable(false);
-
         lblTotal.setText("Description:");
-
-        txtDescription.setEditable(false);
 
         btnCreatePromotion.setText("Create Promotion");
         btnCreatePromotion.addActionListener(new java.awt.event.ActionListener() {
@@ -121,22 +113,18 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
                                 .addGap(22, 22, 22)
                                 .addComponent(btnBack)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtPromotionCode, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPercentageDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtFlatDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtFlatDiscount)
+                            .addComponent(txtPromotionCode)
+                            .addComponent(txtPercentageDiscount)
+                            .addComponent(txtExpiry)
+                            .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
+                        .addGap(246, 246, 246)
                         .addComponent(btnCreatePromotion)))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtDescription, txtExpiry, txtFlatDiscount, txtPercentageDiscount, txtPromotionCode});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -146,31 +134,28 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle))
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPromotionCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPromotionCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFlatDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFlatDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPercentageDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPrice))
+                    .addComponent(lblPrice)
+                    .addComponent(txtPercentageDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuantity))
+                    .addComponent(lblQuantity)
+                    .addComponent(txtExpiry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotal))
-                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotal)
+                    .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnCreatePromotion)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtDescription, txtExpiry, txtFlatDiscount, txtPercentageDiscount, txtPromotionCode});
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -186,8 +171,6 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
             
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String regState="pending";
-        String role="supplier";
         String query = "INSERT INTO discount(`code`, `discountamount`, `expiry`,`discountpercent`,`discountdescription`)" 
                 + " VALUES ('"+txtPromotionCode.getText()+"','"+txtFlatDiscount.getText()+"','"+txtPercentageDiscount.getText()+"','"+txtExpiry.getText()+"','"+txtDescription.getText()+"')";     
         
@@ -281,7 +264,26 @@ public class CreatePromotionlJPanel extends javax.swing.JPanel {
         customerList.add(customer);
     }
 
-    private void updateCustomerMessage(String mailId, String toString) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void updateCustomerMessage(String mailId, String newMessage) {
+        
+        try {
+	connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
+
+        String query = " update users set messages=? where userId=?";
+        PreparedStatement preparedStmt = connection.prepareStatement(query);
+
+        //query = " update users set registrationState=? where userId=?";
+        preparedStmt = connection.prepareStatement(query);
+        preparedStmt.setString(1, newMessage);
+        preparedStmt.setString(2, mailId);
+        preparedStmt.execute();
+     
+        connection.close();
+        JOptionPane.showMessageDialog(null, "Message updated", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }               
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        
     }
 }
