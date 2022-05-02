@@ -22,6 +22,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
     public User loggedInUser;
+    public String password;
     public CustomerLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();
@@ -45,7 +46,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -83,12 +84,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("New User? Please register->");
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,12 +104,12 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                                 .addComponent(jButton2)
                                 .addGap(175, 175, 175))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMailId, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(btnLogin)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(passwordField))
                                 .addGap(0, 214, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -131,9 +126,9 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
                 .addComponent(txtMailId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(2, 2, 2)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,6 +148,7 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        password= new String(passwordField.getPassword());
         if(validateUser()){
         CustomerWorkAreaJPanel CustomerWorkAreaJPanel= new CustomerWorkAreaJPanel(userProcessContainer, loggedInUser);
         CustomerWorkAreaJPanel.setBounds(0, 0, 1000, 1000);
@@ -172,10 +168,6 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     private void txtMailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMailIdActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -186,14 +178,14 @@ public class CustomerLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField txtMailId;
-    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 
     private boolean validateUser() {    
     try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where mailId='"+txtMailId.getText()+"' and password='"+txtPassword.getText()+"' and role='customer'";     
+        String query = "Select * from users where mailId='"+txtMailId.getText()+"' and password='"+password+"' and role='customer'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
         

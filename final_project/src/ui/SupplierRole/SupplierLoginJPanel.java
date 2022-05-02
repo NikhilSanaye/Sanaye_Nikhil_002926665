@@ -23,6 +23,7 @@ import model.User;
 public class SupplierLoginJPanel extends javax.swing.JPanel {
   
     private JPanel userProcessContainer;
+    private String pass;
     public SupplierLoginJPanel(JPanel userProcessContainer) {
         
         initComponents();
@@ -40,12 +41,12 @@ public class SupplierLoginJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnLogin1 = new javax.swing.JButton();
+        passwordField = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -98,14 +99,15 @@ public class SupplierLoginJPanel extends javax.swing.JPanel {
                         .addGap(199, 199, 199)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLogin)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLogin1)))
+                                .addComponent(btnLogin1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -122,9 +124,9 @@ public class SupplierLoginJPanel extends javax.swing.JPanel {
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(btnLogin)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -136,6 +138,7 @@ public class SupplierLoginJPanel extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        pass= new String(passwordField.getPassword());
         if(validateSupplier()){
         SupplierWorkAreaJPanel swajp = new SupplierWorkAreaJPanel(userProcessContainer, txtUsername.getText());
         userProcessContainer.add("SupplierWorkAreaJPanel",swajp);
@@ -165,14 +168,14 @@ public class SupplierLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
     private boolean validateSupplier() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+txtPassword.getText()+"' and role='supplier' and registrationState='true'";     
+        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+pass+"' and role='supplier' and registrationState='true'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
         if (rs.next()) {

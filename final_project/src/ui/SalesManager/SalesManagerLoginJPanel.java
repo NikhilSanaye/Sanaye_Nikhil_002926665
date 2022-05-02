@@ -24,6 +24,7 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
     private User salesManagerUser;
+    private String pass;
     public SalesManagerLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();
@@ -42,10 +43,10 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -81,12 +82,12 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(password))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -103,9 +104,9 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(jButton1)
                 .addGap(231, 231, 231))
         );
@@ -113,6 +114,7 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        pass= new String(password.getPassword());
         if(validateSalesUser()){
             
         if(salesManagerUser.getRole().equals("salesmanager")){    
@@ -140,14 +142,14 @@ public class SalesManagerLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField password;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
     private boolean validateSalesUser() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+txtPassword.getText()+"'";     
+        String query = "Select * from users where userId='"+txtUsername.getText()+"' and password='"+pass+"'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
         while(rs.next()) {

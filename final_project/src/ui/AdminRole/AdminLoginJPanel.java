@@ -21,6 +21,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
   
     private JPanel userProcessContainer;
     private SupplierDirectory supplierDirectory;
+    public String password;
     public AdminLoginJPanel(JPanel userProcessContainer,SupplierDirectory supplierDirectory) {
         
         initComponents();
@@ -39,10 +40,10 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUserid = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        pwd = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(650, 600));
 
@@ -78,12 +79,12 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserid, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUserid, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(pwd))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -101,7 +102,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(231, 231, 231))
@@ -109,7 +110,7 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        password= new String(pwd.getPassword());
 
         // TODO add your handling code here:
         if(validateUser()){
@@ -127,14 +128,14 @@ public class AdminLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField pwd;
     private javax.swing.JTextField txtUserid;
     // End of variables declaration//GEN-END:variables
 
     private boolean validateUser() {
         try {
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_schema", "root", "admin");
-        String query = "Select * from users where userId='"+txtUserid.getText()+"' and password='"+txtPassword.getText()+"' and role='administrator'";     
+        String query = "Select * from users where userId='"+txtUserid.getText()+"' and password='"+password+"' and role='administrator'";     
         Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
         if (rs.next()) {
